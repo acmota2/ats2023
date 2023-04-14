@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ats2023/Annotations/Annotations.iml" filepath="$PROJECT_DIR$/ats2023/Annotations/Annotations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ats2023/HousingSimulator.iml" filepath="$PROJECT_DIR$/ats2023/HousingSimulator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ats.iml" filepath="$PROJECT_DIR$/.idea/ats.iml" />
+    </modules>
+  </component>
+</project>
