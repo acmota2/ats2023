@@ -51,14 +51,15 @@ public class Serializer
      * @return  The escaped version of the character
      */
     private String escapeChar(char c) {
-        return switch (c) {
-            case '\\' -> "\\\\";
-            case '"' -> "\\\"";
-            case '{' -> "\\{";
-            case '}' -> "\\}";
-            case '$' -> "\\$";
-            default -> Character.toString(c);
-        };
+        String s;
+        switch (c) {
+            case '\\': return "\\\\";
+            case '"': return "\\\"";
+            case '{': return "\\{";
+            case '}': return "\\}";
+            case '$': return "\\$";
+            default: return Character.toString(c);
+        }
     }
 
     /**

@@ -122,12 +122,14 @@ public class SmartBulbController extends Controller {
      * @return the colour
      */
     private SmartBulb.LampColour colourFromString(String name) {
-        return switch(name) {
-            case "WARM" -> SmartBulb.LampColour.Warm;
-            case "NEUTRAL" -> SmartBulb.LampColour.Neutral;
-            case "COLD" -> SmartBulb.LampColour.Cold;
-            default -> SmartBulb.LampColour.Warm;
-        };
+        SmartBulb.LampColour colour;
+        switch(name) {
+            case "WARM": colour = SmartBulb.LampColour.Warm; break;
+            case "NEUTRAL": colour = SmartBulb.LampColour.Neutral; break;
+            case "COLD": colour = SmartBulb.LampColour.Cold; break;
+            default: colour = SmartBulb.LampColour.Warm;
+        }
+        return colour;
     }
 
     /**

@@ -141,10 +141,12 @@ public class SmartBulb extends SmartDevice implements AutoSerializable {
      * @return the energy output
      */
     private static double getColourOutput(LampColour colour) {
-        return switch (colour) {
-            case Warm -> 3.0;
-            case Neutral -> 2.0;
-            case Cold -> 1.0;
-        };
+        double result;
+        switch (colour) {
+            case Warm: result = 3.0; break;
+            case Neutral: result = 2.0; break;
+            case Cold: result = 1.0; break;
+        }
+        return result;
     }
 }

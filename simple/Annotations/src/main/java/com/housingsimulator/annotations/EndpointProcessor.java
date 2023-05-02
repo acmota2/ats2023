@@ -30,7 +30,7 @@ public class EndpointProcessor extends AbstractProcessor {
     }
 
     /**
-     * Gets the supported version of java (17) of this processor
+     * Gets the supported version of java of this processor
      * @return 17
      */
     @Override

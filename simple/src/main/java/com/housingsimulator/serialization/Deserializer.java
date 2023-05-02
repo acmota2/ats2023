@@ -51,10 +51,15 @@ public class Deserializer
     private char unescapeChar(char c)
             throws DeserializationException
     {
-        return switch (c) {
-            case '\\', '"', '{', '}', '$' -> c;
+        char result;
+        switch (c) {
+            case '\\':
+            case '"':
+            case '{':
+            case '}':
+            case '$': result = return c;
             default -> throw new DeserializationException(String.format("Unknown escape code \\%c", c), 0, Character.toString(c));
-        };
+        }
     }
 
     /**

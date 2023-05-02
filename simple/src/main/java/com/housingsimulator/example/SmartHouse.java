@@ -35,13 +35,15 @@ public class SmartHouse implements SimState, AutoSerializable {
 
     @Override
     public Entity getEntity(int index) {
-        return switch (index) {
-            case 0 -> new ImmutableEntity<>(address);
-            case 1 -> l1;
-            case 2 -> l2;
-            case 3 -> l3;
-            default -> null;
-        };
+        ImutableEntity result;
+        switch (index) {
+            case 0: result = new ImmutableEntity<>(address); break;
+            case 1: result = l1; break;
+            case 2: result = l2; break;
+            case 3: result = l3; break;
+            default -> result = null;
+        }
+        return result;
     }
 
     @Override
