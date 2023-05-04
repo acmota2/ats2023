@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7246259b-7dee-41bb-a5fd-b2bf5825e59f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evosuite-1.0.6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/.idea/libraries/au_dius_pact_jvm_consumer_junit5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/CasaInteligente/CasaExceptionNifExistente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/CasaInteligente/CasaInteligente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/CasaInteligente/DivisaoJaExisteException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/Fatura/Fatura.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/Fornecedor/Fornecedor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/Fornecedor/FornecedorComNomeJaExistenteException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/Fornecedor/FornecedorTipo1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/Fornecedor/FornecedorTipo2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/Main/CasaExceptionFornecedorNaoExiste.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/Main/CasaExceptionNifExistente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/Main/Controller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/Main/DataNaoValidaException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/Main/DispositivoExisteNaDivisaoException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/Main/EmpresaComNomeJaExistenteException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/Main/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/Main/NewMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/Main/Parser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/Sistema/Sistema.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/SmartDevice/SmartBulb.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/SmartDevice/SmartCamera.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/SmartDevice/SmartDevice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/SmartDevice/SmartSpeaker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/.idea/libraries/au_dius_pact_jvm_consumer_junit5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/CasaInteligente/CasaExceptionNifExistente.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/CasaInteligente/CasaInteligente.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/CasaInteligente/DivisaoJaExisteException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/Fatura/Fatura.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/Fornecedor/Fornecedor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/Fornecedor/FornecedorComNomeJaExistenteException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/Fornecedor/FornecedorTipo1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/Fornecedor/FornecedorTipo2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/Main/CasaExceptionFornecedorNaoExiste.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/Main/CasaExceptionNifExistente.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/Main/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/Main/DataNaoValidaException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/Main/DispositivoExisteNaDivisaoException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/Main/EmpresaComNomeJaExistenteException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/Main/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/Main/NewMenu$Handler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/Main/NewMenu$PreCondition.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/Main/NewMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/Main/Parser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/Sistema/Sistema.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/SmartDevice/SmartBulb.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/SmartDevice/SmartCamera.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/SmartDevice/SmartDevice.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/SmartDevice/SmartSpeaker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/poo.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/tests/CasaInteligenteTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/tests/FaturaTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/tests/FornecedorTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/tests/SmartBulbTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/tests/SmartDeviceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/tests/SmartSpeakerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/tests/file_generator/Cargo.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/tests/file_generator/Cargo.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/tests/file_generator/src/main.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/tests/file_generator/teste.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/out/production/poo/poo/tests/poo.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/poo.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/tests/CasaInteligenteTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/tests/FaturaTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/tests/FornecedorTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/tests/SmartBulbTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/tests/SmartDeviceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/tests/SmartSpeakerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/tests/file_generator/Cargo.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/tests/file_generator/Cargo.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/tests/file_generator/src/main.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/tests/file_generator/teste.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../poo-main/tests/poo.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../simple/.idea/workspace.xml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2PKoCVh2eaaTspeRNrBuXlH5X7P" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JAVA_HOME": "/home/acmota2/.jdks/corretto-1.8.0_372",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cores_evosuite_param": "12",
+    "evosuite_gui_dialog_height": "1388",
+    "evosuite_gui_dialog_width": "1255",
+    "evosuite_jar_location": "/home/acmota2/repos/ats2023/evosuite-1.0.6.jar",
+    "execution_mode": "MVN",
+    "last_opened_file_path": "/home/acmota2/repos/ats2023/ats",
+    "memory_evosuite_param": "2000",
+    "mvn_location": "",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "onboarding.tips.debug.path": "/home/acmota2/repos/ats2023/ats2023/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "target_folder_evosuite_param": "src/evo",
+    "time_evosuite_param": "3",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="JUnit.CasaInteligenteTest">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.Main.Main" />
+      <module name="ats2023" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.Main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CasaInteligenteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ats2023" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CasaInteligenteTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.CasaInteligenteTest" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7246259b-7dee-41bb-a5fd-b2bf5825e59f" name="Changes" comment="" />
+      <created>1683215008119</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683215008119</updated>
+      <workItem from="1683215009115" duration="1759000" />
+      <workItem from="1683216771951" duration="25000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
