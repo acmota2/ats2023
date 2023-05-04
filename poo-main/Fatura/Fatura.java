@@ -1,13 +1,12 @@
 package poo.Fatura;
 
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class Fatura implements Comparable<Fatura> , Serializable {
-    @Serial
+    //@Serial
     private static final long serialVersionUID = 9999L;
 
     private int NIF;
