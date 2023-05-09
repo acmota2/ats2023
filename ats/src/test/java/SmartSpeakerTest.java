@@ -47,11 +47,11 @@ public class SmartSpeakerTest {
     @Test
     public void testConstructor() {
         SmartSpeaker smartSpe1 = new SmartSpeaker();
-        assertTrue(smartSpe1!=null);
+        assertNotNull(smartSpe1);
         smartSpe1 = new SmartSpeaker("b1");
-        assertTrue(smartSpe1!=null);
+        assertNotNull(smartSpe1);
         smartSpe1 = new SmartSpeaker("b1",10, "RUM", "Sony");
-        assertTrue(smartSpe1!=null);
+        assertNotNull(smartSpe1);
     }
 
     @Test
@@ -96,5 +96,78 @@ public class SmartSpeakerTest {
         smartSpe1.setChannel("XPTO");
         assertEquals("XPTO", smartSpe1.getChannel());
     }
+
+    @Test
+    public void testGetVolume2() {
+        SmartSpeaker smartSpeaker = new SmartSpeaker("speaker1", 0, "", "");
+        int volume = smartSpeaker.getVolume();
+        assertEquals(0, volume);
+    }
+
+    @Test
+    public void testSetChannel2() {
+        SmartSpeaker smartSpeaker = new SmartSpeaker("speaker1", 0, "", "");
+        String channel = "Channel 1";
+        smartSpeaker.setChannel(channel);
+        assertEquals(channel, smartSpeaker.getChannel());
+    }
+
+    @Test
+    public void testVolumeUp() {
+        SmartSpeaker smartSpeaker = new SmartSpeaker("speaker1", 0, "", "");
+        smartSpeaker.volumeUp();
+        assertEquals(1, smartSpeaker.getVolume());
+    }
+
+    @Test
+    public void testVolumeUp_MaxVolume() {
+        // Set volume to maximum
+        SmartSpeaker smartSpeaker = new SmartSpeaker("speaker1", 20, "", "");
+        smartSpeaker.volumeUp();
+        assertEquals(20, smartSpeaker.getVolume());
+    }
+
+    @Test
+    public void testVolumeDown() {
+        SmartSpeaker smartSpeaker = new SmartSpeaker("speaker1", 5, "", "");
+        smartSpeaker.volumeDown();
+        assertEquals(4, smartSpeaker.getVolume());
+    }
+
+    @Test
+    public void testVolumeDown_MinVolume() {
+        // Set volume to minimum
+        SmartSpeaker smartSpeaker = new SmartSpeaker("speaker1", 0, "", "");
+        smartSpeaker.volumeDown();
+        assertEquals(0, smartSpeaker.getVolume());
+    }
+
+    @Test
+    public void testEquals() {
+        SmartSpeaker speaker1 = new SmartSpeaker("speaker1", 10, "Channel 1", "Brand 1");
+        SmartSpeaker speaker2 = new SmartSpeaker("speaker1", 10, "Channel 1", "Brand 1");
+        SmartSpeaker speaker3 = new SmartSpeaker("speaker2", 10, "Channel 1", "Brand 1");
+
+        assertEquals(speaker1, speaker2);
+        assertNotEquals(speaker1, speaker3);
+    }
+
+    @Test
+    public void testClone() {
+        SmartSpeaker speaker1 = new SmartSpeaker("speaker1", 10, "Channel 1", "Brand 1");
+        SmartSpeaker clone = speaker1.clone();
+
+        assertEquals(speaker1, clone);
+        assertNotSame(speaker1, clone);
+    }
+
+    @Test
+    public void testGetConsume() {
+        SmartSpeaker smartSpeaker = new SmartSpeaker();
+        double expectedConsume = 0.01;
+        assertEquals(expectedConsume, smartSpeaker.getConsume());
+    }
+
+
 }
 

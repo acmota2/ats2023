@@ -43,13 +43,13 @@ public class SmartBulbTest {
     @Test
     public void testContructor() {
         SmartBulb smartBul1 = new SmartBulb();
-        assertTrue(smartBul1!=null);
+        assertNotNull(smartBul1);
         smartBul1 = new SmartBulb("b1");
-        assertTrue(smartBul1!=null);
+        assertNotNull(smartBul1);
         smartBul1 = new SmartBulb("b1", SmartBulb.NEUTRAL,10.0);
-        assertTrue(smartBul1!=null);
+        assertNotNull(smartBul1);
         SmartBulb sb2 = new SmartBulb(smartBul1);
-        assertTrue(sb2 != null);
+        assertNotNull(sb2);
     }
 
     @Test
@@ -79,8 +79,83 @@ public class SmartBulbTest {
     public void testCloneeEquals (){
         SmartBulb smartBul1 = new SmartBulb("b1");
         SmartBulb smartBulb2 = smartBul1.clone();
-        assertTrue(smartBul1.equals(smartBulb2) == true);
+        assertEquals(smartBul1, smartBulb2);
 
+    }
+
+    @Test
+    public void testGetTone2() {
+        int tone = SmartBulb.NEUTRAL;
+        SmartBulb smartBulb = new SmartBulb("bulb1", tone, 2.5);
+
+        assertEquals(tone, smartBulb.getTone());
+    }
+
+    @Test
+    public void testSetTone2() {
+        SmartBulb smartBulb = new SmartBulb("bulb1", SmartBulb.NEUTRAL, 2.5);
+        int tone = SmartBulb.WARM;
+        smartBulb.setTone(tone);
+
+        assertEquals(tone, smartBulb.getTone());
+    }
+
+    @Test
+    public void testSetToneInvalid() {
+        SmartBulb smartBulb = new SmartBulb("bulb1", SmartBulb.NEUTRAL, 2.5);
+        int invalidTone = -1;
+        smartBulb.setTone(invalidTone);
+
+        assertEquals(SmartBulb.COLD, smartBulb.getTone());
+
+        int validTone = 3;
+        smartBulb.setTone(validTone);
+
+        assertEquals(SmartBulb.WARM, smartBulb.getTone());
+    }
+
+    @Test
+    public void testGetHeight() {
+        double height = 2.5;
+        SmartBulb smartBulb = new SmartBulb("bulb1", SmartBulb.NEUTRAL, height);
+
+        assertEquals(height, smartBulb.getHeight());
+    }
+
+    @Test
+    public void testSetHeight() {
+        SmartBulb smartBulb = new SmartBulb("bulb1", SmartBulb.NEUTRAL, 2.5);
+        double height = 3.0;
+        smartBulb.setHeight(height);
+
+        assertEquals(height, smartBulb.getHeight());
+    }
+
+    @Test
+    public void testEquals() {
+        SmartBulb bulb1 = new SmartBulb("bulb1", SmartBulb.NEUTRAL, 2.5);
+        SmartBulb bulb2 = new SmartBulb("bulb1", SmartBulb.NEUTRAL, 2.5);
+
+        assertEquals(bulb1, bulb2);
+    }
+
+    @Test
+    public void testClone() {
+        SmartBulb bulb1 = new SmartBulb("bulb1", SmartBulb.NEUTRAL, 2.5);
+        SmartBulb clone = bulb1.clone();
+
+        assertEquals(bulb1, clone);
+        assertNotSame(bulb1, clone);
+    }
+
+    @Test
+    public void testGetConsume() {
+        int tone = SmartBulb.NEUTRAL;
+        double height = 2.5;
+        SmartBulb smartBulb = new SmartBulb("bulb1", tone, height);
+
+        double expectedConsume = 0.32 + tone * 0.02 + height * 0.005;
+        assertEquals(expectedConsume, smartBulb.getConsume());
     }
 
 }

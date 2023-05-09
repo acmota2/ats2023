@@ -4,10 +4,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.example.SmartDevice.*;
 import org.example.CasaInteligente.*;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * The test class CasaInteligenteTest.
@@ -46,9 +46,9 @@ public class CasaInteligenteTest {
     @Test
     public void testConstructor() {
         CasaInteligente casaInte1 = new CasaInteligente();
-        assertTrue(casaInte1!=null);
+        assertNotNull(casaInte1);
         casaInte1 = new CasaInteligente("Campus de Gualtar",253681650,"");
-        assertTrue(casaInte1!=null);
+        assertNotNull(casaInte1);
     }
 
     @Test
@@ -156,6 +156,67 @@ public class CasaInteligenteTest {
         catch (DivisaoJaExisteException a ) {
             System.out.println(a.getMessage());
         }
+    }
+
+    @Test
+    public void testGetNome_proprietario() {
+        CasaInteligente casaInte1 = new CasaInteligente("John Doe", 123456789, "FornecedorX");
+        assertEquals("John Doe", casaInte1.getNome_proprietario());
+    }
+
+    @Test
+    public void testSetNome_proprietario() {
+        CasaInteligente casaInte1 = new CasaInteligente();
+        casaInte1.setNome_proprietario("Jane Smith");
+        assertEquals("Jane Smith", casaInte1.getNome_proprietario());
+    }
+
+    @Test
+    public void testGetNIF() {
+        CasaInteligente casaInte1 = new CasaInteligente("John Doe", 123456789, "FornecedorX");
+        assertEquals(123456789, casaInte1.getNIF());
+    }
+
+    @Test
+    public void testSetNIF() {
+        CasaInteligente casaInte1 = new CasaInteligente();
+        casaInte1.setNIF(987654321);
+        assertEquals(987654321, casaInte1.getNIF());
+    }
+
+    @Test
+    public void testGetDevices() {
+        CasaInteligente casaInte1 = new CasaInteligente("John Doe", 123456789, "FornecedorX");
+        SmartDevice smartDevice = new SmartSpeaker("Device1");
+        casaInte1.addDevice(smartDevice);
+        assertEquals(1, casaInte1.getDevices().size());
+        assertTrue(casaInte1.getDevices().containsKey("Device1"));
+    }
+
+    @Test
+    public void testSetDevices() {
+        CasaInteligente casaInte1 = new CasaInteligente("John Doe", 123456789, "FornecedorX");
+        SmartDevice smartDevice1 = new SmartBulb("Device1");
+        SmartDevice smartDevice2 = new SmartSpeaker("Device2");
+        casaInte1.addDevice(smartDevice1);
+
+        CasaInteligente casaInte2 = new CasaInteligente();
+        casaInte2.setDevices(casaInte1.getDevices());
+        casaInte2.addDevice(smartDevice2);
+
+        assertEquals(2, casaInte2.getDevices().size());
+        assertTrue(casaInte2.getDevices().containsKey("Device1"));
+        assertTrue(casaInte2.getDevices().containsKey("Device2"));
+    }
+
+    @Test
+    public void testGetLocations() throws DivisaoJaExisteException {
+        CasaInteligente casaInte1 = new CasaInteligente("John Doe", 123456789, "FornecedorX");
+        casaInte1.addRoom("Living Room");
+        casaInte1.addToRoom("Living Room", "Device1");
+        assertEquals(1, casaInte1.getLocations().size());
+        assertTrue(casaInte1.getLocations().containsKey("Living Room"));
+        assertTrue(casaInte1.getLocations().get("Living Room").contains("Device1"));
     }
 
 
