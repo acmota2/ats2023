@@ -46,8 +46,17 @@ instance Arbitrary House where
         nif <- choose (100000000, 290000000)
         roomN <- choose (4, length roomTypes)
         providerN <- elements providers
-        rooms <- listOf1 arbitrary -- isto está bastante problemático
-        return (House fullname nif (Fornecedor providerN) rooms)
+        rooms <- listOf1 arbitrary
+        return (House fullname nif (Fornecedor providerN) (makeUnique [] rooms)) -- é porco, mas funciona
+
+makeUnique :: [(Room, Int)] -> [Room] -> [Room]
+makeUnique _ [] = []
+makeUnique l (h:t)
+    | h `elem` map fst l = (Room (roomNameAdd (name h) (show (n+1))) (smartDevices h)) : makeUnique (a ++ ((b1,n+1):b2)) t
+    | otherwise = h : makeUnique (((Room (name h) []), 1) : l) t
+    where (a, ((b1,n):b2)) = span (\x -> (fst x) /= h) l
+
+roomNameAdd (RoomName x) y = RoomName (x ++ y)
 
 data Room = Room {
     name :: RoomName,
@@ -61,8 +70,7 @@ instance Arbitrary Room where
         return (Room (RoomName rname) smartDevices)
 
 instance Show Room where
-    show r = "Divisao:" ++ (show $ name r) ++ "\n" ++ (concatMap ((++"\n") . show) i) ++ (show l) -- isto é porco de tantas maneiras
-        where (i, l) = (init $ smartDevices r, last $ smartDevices r)
+    show r = "Divisao:" ++ (show $ name r) ++ "\n" ++ ((concatMap ((++"\n") . show) . smartDevices) r)
 
 newtype RoomName = RoomName String deriving Eq
 
