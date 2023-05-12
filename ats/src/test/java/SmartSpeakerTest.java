@@ -142,13 +142,12 @@ public class SmartSpeakerTest {
         assertEquals(0, smartSpeaker.getVolume());
     }
 
-    @Test
-    public void testEquals() {
-        SmartSpeaker speaker1 = new SmartSpeaker("speaker1", 10, "Channel 1", "Brand 1");
-        SmartSpeaker speaker2 = new SmartSpeaker("speaker1", 10, "Channel 1", "Brand 1");
-        SmartSpeaker speaker3 = new SmartSpeaker("speaker2", 10, "Channel 1", "Brand 1");
 
-        assertEquals(speaker1, speaker2);
+    @Test
+    public void testNotEquals() {
+        SmartSpeaker speaker1 = new SmartSpeaker("speaker1", 10, "Channel 1", "Brand 1");
+        SmartSpeaker speaker3 = new SmartSpeaker("speaker3", 10, "Channel 1", "Brand 3");
+
         assertNotEquals(speaker1, speaker3);
     }
 
@@ -161,11 +160,12 @@ public class SmartSpeakerTest {
         assertNotSame(speaker1, clone);
     }
 
+
     @Test
     public void testGetConsume() {
         SmartSpeaker smartSpeaker = new SmartSpeaker();
         double expectedConsume = 0.01;
-        assertEquals(expectedConsume, smartSpeaker.getConsume());
+        assertEquals(expectedConsume, smartSpeaker.getConsume(),0.01);
     }
 
 

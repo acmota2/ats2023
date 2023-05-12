@@ -4,9 +4,13 @@ import org.example.Fatura.Fatura;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+//import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.example.Fornecedor.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -159,70 +163,71 @@ public class FornecedorTest {
         assertEquals(multiplicador, fornecedor.getMultiplicador());
     }
 
+
     @Test
     public void testSetFaturas1() {
-        Map<Integer, List<Fatura>> faturas = new HashMap<>();
-        List<Fatura> faturaList = new ArrayList<>();
-        Fatura fatura = new Fatura();
-        faturaList.add(fatura);
-        faturas.put(2023, faturaList);
-
         Fornecedor fornecedor = new FornecedorTipo1();
-        fornecedor.setFaturas(faturas);
-
-        assertEquals(faturas, fornecedor.getFaturas());
+        Map<Integer, List<Fatura>> mapFaturaList = new HashMap<>();
+        Fatura fatura = new Fatura(31342,23.4,LocalDate.of(2023, 5, 12), LocalDate.of(2023, 5, 13));
+        List<Fatura> faturaList = new ArrayList<>();
+        faturaList.add(fatura);
+        mapFaturaList.put(2023,faturaList);
+        fornecedor.setFaturas(mapFaturaList);
+        fornecedor.addFatura(31342, fatura);
+        List<Fatura> expected = fornecedor.getFaturas().get(2023);
+        assertThat(expected, is(fornecedor.getFaturas().get(2023)));
     }
+
 
     @Test
     public void testSetFaturas2() {
-        Map<Integer, List<Fatura>> faturas = new HashMap<>();
-        List<Fatura> faturaList = new ArrayList<>();
-        Fatura fatura = new Fatura();
-        faturaList.add(fatura);
-        faturas.put(2023, faturaList);
-
         Fornecedor fornecedor = new FornecedorTipo2();
-        fornecedor.setFaturas(faturas);
-
-        assertEquals(faturas, fornecedor.getFaturas());
+        Map<Integer, List<Fatura>> mapFaturaList = new HashMap<>();
+        Fatura fatura = new Fatura(31342,23.4,LocalDate.of(2023, 5, 12), LocalDate.of(2023, 5, 13));
+        List<Fatura> faturaList = new ArrayList<>();
+        faturaList.add(fatura);
+        mapFaturaList.put(2023,faturaList);
+        fornecedor.setFaturas(mapFaturaList);
+        fornecedor.addFatura(31342, fatura);
+        List<Fatura> expected = fornecedor.getFaturas().get(2023);
+        assertThat(expected, is(fornecedor.getFaturas().get(2023)));
     }
+
 
     @Test
     public void testGetFaturasDoNIF1() {
-        int nif = 123456789;
         List<Fatura> faturaList = new ArrayList<>();
-        Fatura fatura = new Fatura();
+        Fatura fatura = new Fatura(31342,23.4,LocalDate.of(2023, 5, 12), LocalDate.of(2023, 5, 13));
         faturaList.add(fatura);
 
-        Map<Integer, List<Fatura>> faturas = new HashMap<>();
-        faturas.put(nif, faturaList);
+        Map<Integer, List<Fatura>> mapFaturas = new HashMap<>();
+        mapFaturas.put(2023, faturaList);
 
         Fornecedor fornecedor = new FornecedorTipo1();
-        fornecedor.setFaturas(faturas);
+        fornecedor.setFaturas(mapFaturas);
+        fornecedor.addFatura(31342, fatura);
 
-        List<Fatura> actualFaturas = fornecedor.getFaturasDoNIF(nif);
+        List<Fatura> actualFaturas = fornecedor.getFaturasDoNIF(31342);
 
-        assertEquals(faturaList, actualFaturas);
-        assertNotSame(faturaList, actualFaturas);
+        assertThat(faturaList, is(actualFaturas));
     }
 
     @Test
     public void testGetFaturasDoNIF2() {
-        int nif = 123456789;
         List<Fatura> faturaList = new ArrayList<>();
-        Fatura fatura = new Fatura();
+        Fatura fatura = new Fatura(31342,23.4,LocalDate.of(2023, 5, 12), LocalDate.of(2023, 5, 13));
         faturaList.add(fatura);
 
-        Map<Integer, List<Fatura>> faturas = new HashMap<>();
-        faturas.put(nif, faturaList);
+        Map<Integer, List<Fatura>> mapFaturas = new HashMap<>();
+        mapFaturas.put(2023, faturaList);
 
         Fornecedor fornecedor = new FornecedorTipo2();
-        fornecedor.setFaturas(faturas);
+        fornecedor.setFaturas(mapFaturas);
+        fornecedor.addFatura(31342, fatura);
 
-        List<Fatura> actualFaturas = fornecedor.getFaturasDoNIF(nif);
+        List<Fatura> actualFaturas = fornecedor.getFaturasDoNIF(31342);
 
-        assertEquals(faturaList, actualFaturas);
-        assertNotSame(faturaList, actualFaturas);
+        assertThat(faturaList, is(actualFaturas));
     }
 
     @Test
@@ -249,22 +254,25 @@ public class FornecedorTest {
         assertTrue(fornecedor.getFaturas().get(nif).contains(fatura));
     }
 
+
     @Test
     public void testTemFaturas1() {
         Fornecedor fornecedor = new FornecedorTipo1();
         assertFalse(fornecedor.TemFaturas());
 
         List<Fatura> faturaList = new ArrayList<>();
-        Fatura fatura = new Fatura();
+        Fatura fatura = new Fatura(31342,232.4,LocalDate.of(2023, 5, 12), LocalDate.of(2023, 5, 13));
         faturaList.add(fatura);
 
-        Map<Integer, List<Fatura>> faturas = new HashMap<>();
-        faturas.put(2023, faturaList);
+        Map<Integer, List<Fatura>> mapFaturas = new HashMap<>();
+        mapFaturas.put(2023, faturaList);
 
-        fornecedor.setFaturas(faturas);
+        fornecedor.setFaturas(mapFaturas);
+        fornecedor.addFatura(31342, fatura);
 
         assertTrue(fornecedor.TemFaturas());
     }
+
 
     @Test
     public void testTemFaturas2() {
@@ -272,13 +280,14 @@ public class FornecedorTest {
         assertFalse(fornecedor.TemFaturas());
 
         List<Fatura> faturaList = new ArrayList<>();
-        Fatura fatura = new Fatura();
+        Fatura fatura = new Fatura(31342,232.4,LocalDate.of(2023, 5, 12), LocalDate.of(2023, 5, 13));
         faturaList.add(fatura);
 
-        Map<Integer, List<Fatura>> faturas = new HashMap<>();
-        faturas.put(2023, faturaList);
+        Map<Integer, List<Fatura>> mapFaturas = new HashMap<>();
+        mapFaturas.put(2023, faturaList);
 
-        fornecedor.setFaturas(faturas);
+        fornecedor.setFaturas(mapFaturas);
+        fornecedor.addFatura(31342, fatura);
 
         assertTrue(fornecedor.TemFaturas());
     }

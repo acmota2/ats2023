@@ -131,6 +131,7 @@ public class SmartBulbTest {
         assertEquals(height, smartBulb.getHeight());
     }
 
+
     @Test
     public void testEquals() {
         SmartBulb bulb1 = new SmartBulb("bulb1", SmartBulb.NEUTRAL, 2.5);

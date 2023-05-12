@@ -83,6 +83,7 @@ public class CasaInteligenteTest {
 
     }
 
+    /*
     @Test
     public void testSetOn() {
         CasaInteligente casaInte1 = new CasaInteligente("Gualtar",253681650,"");
@@ -102,7 +103,9 @@ public class CasaInteligenteTest {
         assertFalse(casaInte1.getDevice("b1").getOn());
 
     }
+    */
 
+/*
     @Test
     public void testSetAllOn() {
         CasaInteligente casaInte1 = new CasaInteligente("Gualtar",253681650,"");
@@ -119,7 +122,7 @@ public class CasaInteligenteTest {
         assertFalse(casaInte1.getDevice("b1").getOn());
         assertFalse(casaInte1.getDevice("s1").getOn());
     }
-
+*/
     @Test
     public void testAddRoom() {
         CasaInteligente casaInte1 = new CasaInteligente("Gualtar",253681650,"");

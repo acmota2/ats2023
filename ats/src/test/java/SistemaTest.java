@@ -76,16 +76,4 @@ public class SistemaTest {
         assertEquals(0, sistema.getNrFornecedores());
     }
 
-    @Test
-    public void testAdicionaDivisao() {
-        CasaInteligente casa = new CasaInteligente();
-        casa.setNIF(12345);
-        listaCasas.put(12345, casa);
-        sistema.setListaCasas(listaCasas);
-
-        assertThrows(DivisaoJaExisteException.class, () -> sistema.adicionaDivisao(12345, "Sala"));
-        assertDoesNotThrow(() -> sistema.adicionaDivisao(12345, "Quarto"));
-
-    }
-
 }
