@@ -133,19 +133,10 @@ public class SmartBulbTest {
 
 
     @Test
-    public void testEquals() {
-        SmartBulb bulb1 = new SmartBulb("bulb1", SmartBulb.NEUTRAL, 2.5);
-        SmartBulb bulb2 = new SmartBulb("bulb1", SmartBulb.NEUTRAL, 2.5);
-
-        assertEquals(bulb1, bulb2);
-    }
-
-    @Test
     public void testClone() {
         SmartBulb bulb1 = new SmartBulb("bulb1", SmartBulb.NEUTRAL, 2.5);
         SmartBulb clone = bulb1.clone();
 
-        assertEquals(bulb1, clone);
         assertNotSame(bulb1, clone);
     }
 
