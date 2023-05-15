@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Sistema.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ats</a> &gt; <a href="index.source.html" class="el_package">org.example.Sistema</a> &gt; <span class="el_source">Sistema.java</span></div><h1>Sistema.java</h1><pre class="source lang-java linenums">package org.example.Sistema;
+
+import org.example.CasaInteligente.*;
+import org.example.Fatura.Fatura;
+import org.example.Fornecedor.*;
+import org.example.Fornecedor.FornecedorComNomeJaExistenteException;
+import org.example.Main.CasaExceptionFornecedorNaoExiste;
+import org.example.Main.CasaExceptionNifExistente;
+import org.example.Main.DispositivoExisteNaDivisaoException;
+import org.example.SmartDevice.*;
+
+import java.io.*;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.TreeSet;
+
+import java.util.stream.Collectors;
+
+public class Sistema implements Serializable {
+    //@Serial
+    private static final long serialVersionUID = 9999L;
+
+
+    private HashMap&lt;Integer, CasaInteligente&gt; listaCasas;
+    private HashMap&lt;String,Fornecedor&gt; listaFornecedores;
+    private LocalDate time;
+
+<span class="nc" id="L31">    public Sistema() {</span>
+<span class="nc" id="L32">        this.listaCasas=new HashMap&lt;&gt;();</span>
+<span class="nc" id="L33">        this.listaFornecedores = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L34">        time=LocalDate.now();</span>
+<span class="nc" id="L35">    }</span>
+
+<span class="nc" id="L37">    public Sistema(HashMap&lt;Integer,CasaInteligente&gt; listaCasas,HashMap&lt;String,Fornecedor&gt;listaFornecedores) {</span>
+<span class="nc" id="L38">        this.setListaCasas(listaCasas);</span>
+<span class="nc" id="L39">        this.setListaFornecedores(listaFornecedores);</span>
+<span class="nc" id="L40">        time=LocalDate.now();</span>
+
+<span class="nc" id="L42">    }</span>
+
+<span class="nc" id="L44">    public Sistema(Sistema s) {</span>
+<span class="nc" id="L45">        this.listaCasas= s.getListaCasas();</span>
+<span class="nc" id="L46">        this.listaFornecedores= s.getListaFornecedores();</span>
+<span class="nc" id="L47">        time=LocalDate.now();</span>
+<span class="nc" id="L48">    }</span>
+
+    public HashMap&lt;Integer, CasaInteligente&gt; getListaCasas() {
+<span class="nc" id="L51">        HashMap&lt;Integer,CasaInteligente&gt; c = new HashMap&lt;&gt;();</span>
+<span class="nc bnc" id="L52" title="All 2 branches missed.">        for (CasaInteligente a : this.listaCasas.values()) {</span>
+<span class="nc" id="L53">            c.put(a.getNIF(),a.clone());</span>
+<span class="nc" id="L54">        }</span>
+<span class="nc" id="L55">        return c;</span>
+    }
+
+    public void setListaCasas(HashMap&lt;Integer, CasaInteligente&gt; listaCasas) {
+<span class="nc" id="L59">        this.listaCasas = new HashMap&lt;&gt;();</span>
+<span class="nc bnc" id="L60" title="All 2 branches missed.">        for (CasaInteligente a : listaCasas.values()) {</span>
+<span class="nc" id="L61">            this.listaCasas.put(a.getNIF(), a.clone());</span>
+<span class="nc" id="L62">        }</span>
+<span class="nc" id="L63">    }</span>
+
+    public HashMap&lt;String, Fornecedor&gt; getListaFornecedores() {
+<span class="nc" id="L66">        HashMap&lt;String,Fornecedor&gt; c = new HashMap&lt;&gt;();</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">        for (Fornecedor a : this.listaFornecedores.values()) {</span>
+<span class="nc" id="L68">            c.put(a.getNome(),a.clone());</span>
+<span class="nc" id="L69">        }</span>
+<span class="nc" id="L70">        return c;</span>
+    }
+
+    public void setListaFornecedores(HashMap&lt;String,Fornecedor&gt; listaFornecedores) {
+<span class="nc" id="L74">        this.listaFornecedores = new HashMap&lt;&gt;();</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">        for (Fornecedor a : listaFornecedores.values()) {</span>
+<span class="nc" id="L76">            this.listaFornecedores.put(a.getNome(), a.clone());</span>
+<span class="nc" id="L77">        }</span>
+<span class="nc" id="L78">    }</span>
+
+    public LocalDate getTime() {
+<span class="nc" id="L81">        return LocalDate.from(time);</span>
+    }
+
+    public void setTime(LocalDate time) {
+<span class="nc" id="L85">        this.time = LocalDate.from(time);</span>
+<span class="nc" id="L86">    }</span>
+
+    public int getNrCasasInteligentes() {
+<span class="nc" id="L89">        return this.listaCasas.size();</span>
+    }
+
+    public int getNrFornecedores() {
+<span class="nc" id="L93">        return this.listaFornecedores.size();</span>
+    }
+
+    public void adicionaDivisao (int nif,String nome) throws DivisaoJaExisteException {
+<span class="nc" id="L97">        this.listaCasas.get(nif).addRoom(nome);</span>
+<span class="nc" id="L98">    }</span>
+
+    public void adicionaCasa(CasaInteligente c) throws org.example.Main.CasaExceptionNifExistente, CasaExceptionFornecedorNaoExiste {
+<span class="nc bnc" id="L101" title="All 2 branches missed.">        if (!this.listaFornecedores.containsKey(c.getNomeFornecedor()))</span>
+<span class="nc" id="L102">            throw new CasaExceptionFornecedorNaoExiste(&quot;A Fornecedor indicada não existe!&quot;);</span>
+<span class="nc bnc" id="L103" title="All 2 branches missed.">        if (this.listaCasas.containsKey(c.getNIF()))</span>
+<span class="nc" id="L104">            throw new CasaExceptionNifExistente(&quot;O NIF definido já esta atribuído a uma Casa Inteligente!&quot;);</span>
+<span class="nc" id="L105">        this.listaCasas.put(c.getNIF(),c.clone());</span>
+<span class="nc" id="L106">    }</span>
+
+    public boolean existeCasa (int nif) {
+<span class="nc" id="L109">        return this.listaCasas.containsKey(nif);</span>
+    }
+
+    public void adicionaFornecedor(Fornecedor e) throws FornecedorComNomeJaExistenteException {
+<span class="nc bnc" id="L113" title="All 2 branches missed.">        if (this.listaFornecedores.containsKey(e.getNome()))</span>
+<span class="nc" id="L114">            throw new FornecedorComNomeJaExistenteException(&quot;O nome definido já esta atribuído a uma Fornecedor!&quot;);</span>
+<span class="nc" id="L115">        this.listaFornecedores.put(e.getNome(),e.clone());</span>
+<span class="nc" id="L116">    }</span>
+
+    public boolean existeFornecedor (String nome) {
+<span class="nc" id="L119">        return this.listaFornecedores.containsKey(nome);</span>
+    }
+
+    public void addDevice(int NIF,String nomeDivisao, SmartDevice s) throws DispositivoExisteNaDivisaoException{
+<span class="nc" id="L123">        CasaInteligente c = this.listaCasas.get(NIF);</span>
+<span class="nc bnc" id="L124" title="All 2 branches missed.">        if(c.roomHasDevice(nomeDivisao,s.getID()))</span>
+<span class="nc" id="L125">            throw new DispositivoExisteNaDivisaoException(&quot;O dispositivo já existe nesta divisão&quot;);</span>
+<span class="nc" id="L126">        c.addDevice(s);</span>
+<span class="nc" id="L127">        c.addToRoom(nomeDivisao,s.getID());</span>
+<span class="nc" id="L128">    }</span>
+
+
+    public void guardaEstado (String fich) throws FileNotFoundException, IOException{
+<span class="nc" id="L132">        FileOutputStream fos= new FileOutputStream(fich);</span>
+<span class="nc" id="L133">        ObjectOutputStream oos= new ObjectOutputStream(fos);</span>
+<span class="nc" id="L134">        oos.writeObject(this);</span>
+<span class="nc" id="L135">        oos.flush();</span>
+<span class="nc" id="L136">        oos.close();</span>
+<span class="nc" id="L137">    }</span>
+
+    public Sistema carregaEstado(String fich) throws FileNotFoundException,IOException,ClassNotFoundException {
+<span class="nc" id="L140">        FileInputStream fis= new FileInputStream(fich);</span>
+<span class="nc" id="L141">        ObjectInputStream ois= new ObjectInputStream(fis);</span>
+<span class="nc" id="L142">        Sistema f = (Sistema) ois.readObject();</span>
+<span class="nc" id="L143">        ois.close();</span>
+<span class="nc" id="L144">        return f;</span>
+    }
+
+    public void simulacao(LocalDate time) {
+<span class="nc" id="L148">        LocalDate finalTime= LocalDate.from(time);</span>
+<span class="nc" id="L149">        Period t = Period.between(this.getTime(),finalTime);</span>
+<span class="nc" id="L150">        double tempo = t.getDays();</span>
+
+<span class="nc bnc" id="L152" title="All 2 branches missed.">        for (CasaInteligente a : this.listaCasas.values()) {</span>
+<span class="nc" id="L153">            double valorFaturacao=this.listaFornecedores.get(a.getNomeFornecedor()).precoDiaPorDispositivo(a.getNrDispositivos(),a.getNrHorasDispositivoson()*tempo);</span>
+<span class="nc" id="L154">            Fatura fatura= new Fatura(a.getNIF(),valorFaturacao,this.getTime(),finalTime);</span>
+<span class="nc" id="L155">            this.listaFornecedores.get(a.getNomeFornecedor()).addFatura(a.getNIF(),fatura);</span>
+<span class="nc" id="L156">        }</span>
+<span class="nc" id="L157">        this.time=finalTime;</span>
+<span class="nc" id="L158">    }</span>
+
+    public String fornecedorQueMaisFaturou() {
+<span class="nc" id="L161">        String r = &quot;&quot;;</span>
+<span class="nc" id="L162">        double maior = -1;</span>
+<span class="nc bnc" id="L163" title="All 2 branches missed.">        for(Fornecedor f: this.listaFornecedores.values()) {</span>
+<span class="nc" id="L164">            double v = f.getFaturas().values()</span>
+<span class="nc" id="L165">                    .stream()</span>
+<span class="nc" id="L166">                    .map(a -&gt; a</span>
+<span class="nc" id="L167">                            .stream()</span>
+<span class="nc" id="L168">                            .mapToDouble(Fatura::getValorFaturacao)</span>
+<span class="nc" id="L169">                            .sum())</span>
+<span class="nc" id="L170">                    .reduce(0., Double::sum);</span>
+<span class="nc bnc" id="L171" title="All 2 branches missed.">            if(v &gt; maior) {</span>
+<span class="nc" id="L172">                r = f.getNome();</span>
+            }
+<span class="nc" id="L174">        }</span>
+<span class="nc" id="L175">        return r;</span>
+    }
+
+    private double getConsumoDaCasaEm(CasaInteligente c, LocalDate inicio, LocalDate fim) {
+<span class="nc" id="L179">        double accum = 0.;</span>
+<span class="nc bnc" id="L180" title="All 2 branches missed.">        for(Fornecedor e: this.listaFornecedores.values()) {</span>
+<span class="nc" id="L181">            List&lt;Fatura&gt; f = e.getFaturasDoNIF(c.getNIF());</span>
+<span class="nc bnc" id="L182" title="All 2 branches missed.">            if(f != null) {</span>
+<span class="nc" id="L183">                accum = f.stream()</span>
+<span class="nc bnc" id="L184" title="All 4 branches missed.">                        .filter( f1 -&gt; f1.getData_inicio().compareTo(inicio) &gt;= 0 &amp;&amp; f1.getData_fim().compareTo(fim) &lt;= 0)</span>
+<span class="nc" id="L185">                        .mapToDouble(Fatura :: getValorFaturacao)</span>
+<span class="nc" id="L186">                        .sum();</span>
+            }
+<span class="nc" id="L188">        }</span>
+<span class="nc" id="L189">        return accum;</span>
+    }
+
+    public CasaInteligente casaQueMaisGastou(LocalDate inicio, LocalDate fim) {
+<span class="nc" id="L193">        Comparator&lt;CasaInteligente&gt; c = (c1, c2) -&gt; Double.compare(</span>
+<span class="nc" id="L194">                getConsumoDaCasaEm(c2, inicio, fim),</span>
+<span class="nc" id="L195">                getConsumoDaCasaEm(c1, inicio, fim)</span>
+        );
+<span class="nc" id="L197">        return this.listaCasas.values().stream()</span>
+<span class="nc" id="L198">                .collect(Collectors.toCollection(() -&gt; new TreeSet&lt;&gt;(c)))</span>
+<span class="nc" id="L199">                .first().clone();</span>
+    }
+
+    public List&lt;Fatura&gt; faturasDoFornecedor(String fornecedor) throws CasaExceptionFornecedorNaoExiste {
+<span class="nc" id="L203">        Fornecedor r = this.listaFornecedores.get(fornecedor);</span>
+<span class="nc bnc" id="L204" title="All 2 branches missed.">        if(r == null) {</span>
+<span class="nc" id="L205">            throw new CasaExceptionFornecedorNaoExiste(&quot;Fornecedor não existente&quot;);</span>
+        }
+<span class="nc" id="L207">        return r.getFaturas().values()</span>
+<span class="nc" id="L208">                .stream()</span>
+<span class="nc" id="L209">                .flatMap(List::stream)</span>
+<span class="nc" id="L210">                .map(Fatura::clone)</span>
+<span class="nc" id="L211">                .collect(Collectors.toList());</span>
+    }
+
+    public TreeSet&lt;CasaInteligente&gt; maioresConsumidoresEnergia(LocalDate inicio, LocalDate fim) {
+<span class="nc" id="L215">        Comparator&lt;CasaInteligente&gt; c = (c1, c2) -&gt; Double.compare(</span>
+<span class="nc" id="L216">                getConsumoDaCasaEm(c2, inicio, fim),</span>
+<span class="nc" id="L217">                getConsumoDaCasaEm(c1, inicio, fim)</span>
+        );
+<span class="nc" id="L219">        return this.listaCasas.values().stream()</span>
+<span class="nc" id="L220">                .map(CasaInteligente::clone)</span>
+<span class="nc" id="L221">                .collect(Collectors.toCollection(() -&gt; new TreeSet&lt;&gt;(c)));</span>
+    }
+
+    public boolean TemFaturas() {
+<span class="nc" id="L225">        return this.listaFornecedores.values().stream().anyMatch(Fornecedor::TemFaturas);</span>
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+<span class="nc bnc" id="L231" title="All 2 branches missed.">        if (this == o) return true;</span>
+<span class="nc bnc" id="L232" title="All 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="nc" id="L233">        Sistema sistema = (Sistema) o;</span>
+<span class="nc bnc" id="L234" title="All 4 branches missed.">        return this.getListaCasas().equals(sistema.getListaCasas()) &amp;&amp; this.getListaFornecedores().equals(sistema.getListaFornecedores());</span>
+    }
+
+
+    @Override
+    public String toString() {
+<span class="nc" id="L240">        return &quot;Sistema {&quot; + '\n' +</span>
+<span class="nc" id="L241">                &quot;listaCasas= &quot; +'\n' + this.getListaCasas() + '\n' +</span>
+<span class="nc" id="L242">                &quot;listaFornecedores= &quot;+ '\n' + this.getListaFornecedores() + '\n' +</span>
+                '}';
+    }
+
+    public Sistema clone() {
+<span class="nc" id="L247">        return new Sistema(this);</span>
+    }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

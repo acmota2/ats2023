@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CasaInteligente.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ats</a> &gt; <a href="index.source.html" class="el_package">org.example.CasaInteligente</a> &gt; <span class="el_source">CasaInteligente.java</span></div><h1>CasaInteligente.java</h1><pre class="source lang-java linenums">package org.example.CasaInteligente;
+
+/**
+ * A CasaInteligente faz a gestão dos SmartDevices que existem e dos 
+ * espaços (as salas) que existem na casa.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
+ */
+
+import org.example.SmartDevice.SmartDevice;
+
+import java.io.Serializable;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.util.Map;
+import java.util.Set;
+import java.util.HashMap;
+import java.lang.String;
+import java.lang.Object;
+import java.util.HashSet;
+import org.example.SmartDevice.*;
+
+
+public class CasaInteligente implements Serializable {
+    private String Nome_proprietario;
+    private int NIF;
+    private Map&lt;String, SmartDevice&gt; devices; // identificador -&gt; SmartDevice
+    private Map&lt;String, Set&lt;String&gt;&gt; locations; // Espaço -&gt; Lista codigo dos devices
+    private String nomeFornecedor;
+
+    /**
+     * Constructor for objects of class CasaInteligente
+     */
+<span class="fc" id="L35">    public CasaInteligente() {</span>
+        // initialise instance variables
+<span class="fc" id="L37">        this.Nome_proprietario = &quot;&quot;;</span>
+<span class="fc" id="L38">        this.NIF=0;</span>
+<span class="fc" id="L39">        this.devices = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L40">        this.locations = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L41">        this.nomeFornecedor=&quot;&quot;;</span>
+<span class="fc" id="L42">    }</span>
+
+<span class="fc" id="L44">    public CasaInteligente(String Nome_proprietario, int nif,String nome) {</span>
+        // initialise instance variables
+<span class="fc" id="L46">        this.Nome_proprietario = Nome_proprietario;</span>
+<span class="fc" id="L47">        this.NIF=nif;</span>
+<span class="fc" id="L48">        this.devices = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L49">        this.locations = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L50">        this.nomeFornecedor=nome;</span>
+<span class="fc" id="L51">    }</span>
+
+<span class="nc" id="L53">    public CasaInteligente (CasaInteligente casa) {</span>
+<span class="nc" id="L54">        this.Nome_proprietario = casa.Nome_proprietario;</span>
+<span class="nc" id="L55">        this.NIF=casa.NIF;</span>
+<span class="nc" id="L56">        this.devices = casa.getDevices();</span>
+<span class="nc" id="L57">        this.locations = casa.getLocations();</span>
+<span class="nc" id="L58">        this.nomeFornecedor= casa.getNomeFornecedor();</span>
+<span class="nc" id="L59">    }</span>
+
+    public String getNome_proprietario() {
+<span class="fc" id="L62">        return Nome_proprietario;</span>
+    }
+
+    public void setNome_proprietario(String nome_proprietario) {
+<span class="fc" id="L66">        Nome_proprietario = nome_proprietario;</span>
+<span class="fc" id="L67">    }</span>
+
+    public int getNIF() {
+<span class="fc" id="L70">        return NIF;</span>
+    }
+
+    public void setNIF(int NIF) {
+<span class="fc" id="L74">        this.NIF = NIF;</span>
+<span class="fc" id="L75">    }</span>
+
+    public HashMap&lt;String, SmartDevice&gt; getDevices() {
+<span class="fc" id="L78">        HashMap&lt;String, SmartDevice&gt; res= new HashMap&lt;String, SmartDevice&gt;();</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">        for (SmartDevice s : this.devices.values()) {</span>
+<span class="fc" id="L80">            res.put(s.getID(),s.clone());</span>
+<span class="fc" id="L81">        }</span>
+<span class="fc" id="L82">        return res;</span>
+    }
+
+    public void setDevices(Map&lt;String, SmartDevice&gt; dev) {
+<span class="fc bfc" id="L86" title="All 2 branches covered.">        for (SmartDevice s : dev.values()) {</span>
+<span class="fc" id="L87">            this.devices.put(s.getID(),s.clone());</span>
+<span class="fc" id="L88">        }</span>
+<span class="fc" id="L89">    }</span>
+
+    public HashMap&lt;String, Set&lt;String&gt;&gt; getLocations() {
+<span class="fc" id="L92">        HashMap&lt;String, Set&lt;String&gt;&gt; res = new HashMap&lt;&gt;();</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">        for (String k : this.locations.keySet()) {</span>
+<span class="fc" id="L94">            HashSet&lt;String&gt; divDevices = new HashSet&lt;&gt;(this.locations.get(k));</span>
+<span class="fc" id="L95">            res.put(k,divDevices);</span>
+<span class="fc" id="L96">        }</span>
+<span class="fc" id="L97">        return res;</span>
+    }
+
+    public void setLocations(Map&lt;String, Set&lt;String&gt;&gt; loc) {
+<span class="nc" id="L101">        this.locations = new HashMap&lt;&gt;();</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">        for (String k: loc.keySet()) {</span>
+<span class="nc" id="L103">            HashSet&lt;String&gt; divDevices = new HashSet&lt;&gt;(loc.get(k));</span>
+<span class="nc" id="L104">            this.locations.put(k, divDevices);</span>
+<span class="nc" id="L105">        }</span>
+<span class="nc" id="L106">    }</span>
+
+    public void setDeviceOn(String devCode) {
+<span class="nc" id="L109">        this.devices.get(devCode).turnOn();</span>
+<span class="nc" id="L110">    }</span>
+
+    public String getNomeFornecedor() {
+<span class="nc" id="L113">        return nomeFornecedor;</span>
+    }
+
+    public void setNomeFornecedor(String nomeFornecedor) {
+<span class="nc" id="L117">        this.nomeFornecedor = nomeFornecedor;</span>
+<span class="nc" id="L118">    }</span>
+
+    public boolean existsDevice(String id) {
+<span class="fc" id="L121">        return this.devices.containsKey(id);</span>
+    }
+    
+    public void addDevice(SmartDevice s) {
+<span class="fc" id="L125">        this.devices.put(s.getID(), s.clone());</span>
+<span class="fc" id="L126">    }</span>
+    
+    public SmartDevice getDevice(String s) {
+<span class="fc bfc" id="L129" title="All 2 branches covered.">            if (this.devices.containsKey(s))</span>
+<span class="fc" id="L130">                return this.devices.get(s).clone();</span>
+            else
+<span class="fc" id="L132">                return new SmartBulb();</span>
+    }
+    
+    public void setOn(String s, boolean b) {
+<span class="nc bnc" id="L136" title="All 2 branches missed.">        if (this.devices.containsKey(s))</span>
+<span class="nc" id="L137">            this.devices.get(s).setOn(b);</span>
+<span class="nc" id="L138">    }</span>
+    
+    public void setAllOn(boolean b) {
+<span class="nc bnc" id="L141" title="All 2 branches missed.">        for (SmartDevice i : this.devices.values()) {</span>
+<span class="nc" id="L142">            i.setOn(b);</span>
+<span class="nc" id="L143">        }</span>
+<span class="nc" id="L144">    }</span>
+
+    public int getNrDispositivos() {
+<span class="nc" id="L147">        return this.devices.values().size();</span>
+    }
+    
+    public void addRoom(String s) throws DivisaoJaExisteException{
+<span class="pc bpc" id="L151" title="1 of 2 branches missed.">        if (this.hasRoom(s))</span>
+<span class="nc" id="L152">            throw new DivisaoJaExisteException(&quot;Esta Divisão já existe!&quot;);</span>
+<span class="fc" id="L153">        HashSet &lt;String&gt; nr= new HashSet&lt;&gt;();</span>
+<span class="fc" id="L154">        this.locations.put(s,nr);</span>
+<span class="fc" id="L155">    }</span>
+    
+    public boolean hasRoom(String s) {
+<span class="fc" id="L158">        return this.locations.containsKey(s);</span>
+    }
+    
+    public void addToRoom (String s1, String s2) {
+<span class="fc" id="L162">        this.locations.get(s1).add(s2);</span>
+<span class="fc" id="L163">    }</span>
+    
+    public boolean roomHasDevice (String s1, String s2) {
+<span class="fc" id="L166">        return this.locations.get(s1).contains(s2);</span>
+    }
+
+    public double getNrHorasDispositivoson() {
+<span class="nc" id="L170">       return this.devices.values()</span>
+<span class="nc" id="L171">               .stream()</span>
+<span class="nc" id="L172">               .filter(SmartDevice::getOn)</span>
+<span class="nc" id="L173">               .mapToDouble(SmartDevice::getConsume)</span>
+<span class="nc" id="L174">               .sum();</span>
+    }
+
+    public boolean equals(Object o) {
+<span class="nc bnc" id="L178" title="All 2 branches missed.">        if (this == o) return true;</span>
+<span class="nc bnc" id="L179" title="All 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="nc" id="L180">        CasaInteligente that = (CasaInteligente) o;</span>
+<span class="nc bnc" id="L181" title="All 4 branches missed.">        return this.Nome_proprietario.equals(that.Nome_proprietario)</span>
+                &amp;&amp; this.NIF == that.NIF
+<span class="nc bnc" id="L183" title="All 2 branches missed.">                &amp;&amp; this.nomeFornecedor.equals(that.nomeFornecedor)</span>
+<span class="nc bnc" id="L184" title="All 2 branches missed.">                &amp;&amp; this.devices.equals(that.devices)</span>
+<span class="nc bnc" id="L185" title="All 2 branches missed.">                &amp;&amp; this.locations.equals(that.locations);</span>
+    }
+
+    public String toString() {
+<span class="nc" id="L189">        return &quot;CasaInteligente{&quot; +</span>
+                &quot;Nome Proprietário='&quot; + this.Nome_proprietario  + '\'' +
+                &quot;, NIF = '&quot;+ this.NIF + '\'' +
+                &quot;, Fornecedor = '&quot; +this.nomeFornecedor+ '\''+
+                &quot;, devices='&quot; + this.devices +  '\''+
+                &quot;, locations='&quot; + this.locations + '\'' +
+                '}'+ '\n';
+    }
+
+    public CasaInteligente clone() {
+<span class="nc" id="L199">        return new CasaInteligente(this);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
