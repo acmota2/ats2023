@@ -7,9 +7,14 @@ default: all
 
 all: run pitest evosuite jacoco
 
-run:
+install:
 	mvn clean install
+
+run:
 	$(MVN) exec:java -Dexec.mainClass=org.example.Main.Main
+
+run-debug:
+	$(MVN) -X exec:java -Dexec.mainClass=org.example.Main
 
 evosuite:
 	java -jar $(EVOSUITE_DIR)/evosuite.jar -target target/classes -class org.example.*
