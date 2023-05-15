@@ -7,7 +7,7 @@ default: all
 
 all: run pitest evosuite jacoco
 
-isntall:
+install:
 	mvn clean install
 
 run:
