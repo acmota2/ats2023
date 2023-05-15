@@ -1,14 +1,10 @@
-
-
 import org.example.Fatura.Fatura;
+import org.example.Fornecedor.Fornecedor;
+import org.example.Fornecedor.FornecedorTipo1;
+import org.example.Fornecedor.FornecedorTipo2;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-//import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-
-import org.example.Fornecedor.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,6 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 
