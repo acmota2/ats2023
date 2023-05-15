@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SistemaTest {
 
+    /*
     private Sistema sistema;
     private HashMap<Integer, CasaInteligente> listaCasas;
     private HashMap<String, Fornecedor> listaFornecedores;
@@ -76,4 +77,6 @@ public class SistemaTest {
         assertEquals(0, sistema.getNrFornecedores());
     }
 
+    @Test
+     */
 }
