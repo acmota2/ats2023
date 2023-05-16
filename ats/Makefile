@@ -5,10 +5,11 @@ PITEST_DIR = ./pit
 
 default: all
 
-all: run evosuite pitest jacoco
+all: compile evosuite pitest jacoco
 
-install:
-	mvn clean install
+compile:
+	mvn clean
+	mvn compile
 
 run:
 	$(MVN) exec:java -Dexec.mainClass=org.example.Main.Main
@@ -22,13 +23,15 @@ evosuite:
 	done
 
 jacoco:
-	java -jar $(JACOCO_DIR)/jacoco.jar report jacoco.exec --classfiles target/classes --sourcefiles src/main/java --html jacoco-report
+	mvn test
+	#java -jar $(JACOCO_DIR)/org.jacoco.agent-0.8.10.jar report jacoco.exec --classfiles target/classes --sourcefiles src/main/java --html jacoco-report
 
 pitest:
-	java -jar $(PITEST_DIR)/pitest.jar --classUnderTest org.example.CasaInteligente.* --targetClasses org.example.* --sourceDirs src/main/java --outputFormats CSV,HTML --reportDir ./pitest-report
-	java -jar $(PITEST_DIR)/pitest.jar --classUnderTest org.example.Fatura.* --targetClasses org.example.* --sourceDirs src/main/java --outputFormats CSV,HTML --reportDir ./pitest-report
-	java -jar $(PITEST_DIR)/pitest.jar --classUnderTest org.example.Fornecedor.* --targetClasses org.example.* --sourceDirs src/main/java --outputFormats CSV,HTML --reportDir ./pitest-report
-	java -jar $(PITEST_DIR)/pitest.jar --classUnderTest org.example.SmartDevice.* --targetClasses org.example.* --sourceDirs src/main/java --outputFormats CSV,HTML --reportDir ./pitest-report
+	mvn org.pitest:pitest-maven:mutationCoverage
+#	java -jar $(PITEST_DIR)/pitest-1.13.2.jar --classUnderTest org.example.Fatura.* --targetClasses org.example.* --sourceDirs src/main/java --outputFormats CSV,HTML --reportDir ./pitest-report
+#	java -jar $(PITEST_DIR)/pitest-1.13.2.jar --classUnderTest org.example.Fornecedor.* --targetClasses org.example.* --sourceDirs src/main/java --outputFormats CSV,HTML --reportDir ./pitest-report
+#	java -jar $(PITEST_DIR)/pitest-1.13.2.jar --classUnderTest org.example.SmartDevice.* --targetClasses org.example.* --sourceDirs src/main/java --outputFormats CSV,HTML --reportDir ./pitest-report
+#	java -jar $(PITEST_DIR)/pitest-1.13.2.jar --classUnderTest org.example.CasaInteligente.* --targetClasses org.example.* --sourceDirs src/main/java --outputFormats CSV,HTML --reportDir ./pitest-report
 test:
 	$(MVN) test
 
