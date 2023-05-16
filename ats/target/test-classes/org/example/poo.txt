@@ -1,0 +1,116 @@
+Fornecedor:EDP Comercial
+Fornecedor:Galp Energia
+Fornecedor:Iberdrola
+Fornecedor:Endesa
+Fornecedor:Gold Energy
+Fornecedor:Coopernico
+Fornecedor:Enat
+Fornecedor:YIce
+Fornecedor:MEO Energia
+Fornecedor:Muon
+Fornecedor:Luzboa
+Fornecedor:Energia Simples
+Fornecedor:SU Electricidade
+Fornecedor:EDA
+Casa:Vicente de Carvalho Castro,365597405,Iberdrola
+Divisao:Sala de Jantar
+SmartBulb:Warm,11
+SmartBulb:Neutral,12
+Divisao:Sala de Jantar 1
+SmartBulb:Neutral,7
+SmartCamera:(1280x720),65
+SmartSpeaker:2,Radio Renascenca,LG
+SmartBulb:Neutral,5
+SmartBulb:Neutral,20
+SmartBulb:Neutral,10
+SmartCamera:(1024x768),67
+SmartBulb:Neutral,8
+Divisao:Quarto
+SmartBulb:Warm,9
+SmartSpeaker:35,MEGA HITS,Sony
+SmartCamera:(1920x1080),69
+SmartCamera:(1024x768),54
+SmartCamera:(1024x768),95
+SmartBulb:Warm,19
+SmartBulb:Neutral,19
+SmartBulb:Warm,5
+Divisao:Garagem
+SmartCamera:(1366x768),79
+SmartCamera:(1024x768),28
+SmartBulb:Warm,8
+SmartBulb:Neutral,5
+Divisao:Escritorio
+SmartSpeaker:40,RFM,Philips
+SmartSpeaker:65,M80 Radio,Marshall,5.21
+SmartBulb:Neutral,8
+SmartBulb:Neutral,12
+SmartCamera:(2160x1440),71
+SmartBulb:Neutral,7
+SmartCamera:(1366x768),63
+SmartBulb:Neutral,5
+Divisao:Sala de Jantar 2
+SmartBulb:Neutral,9
+SmartBulb:Neutral,9
+SmartSpeaker:30,RTP Antena 1 98.3 FM,JBL
+SmartBulb:Neutral,9
+SmartBulb:Neutral,13
+SmartBulb:Neutral,17
+Casa:Miguel Velho Raposo,134655929,Endesa
+Divisao:Sala de Estar
+SmartBulb:Neutral,17
+SmartCamera:(1920x1080),93
+SmartBulb:Warm,17
+SmartCamera:(2160x1440),34
+SmartBulb:Cold,15
+SmartBulb:Neutral,17
+SmartCamera:(1024x768),80
+SmartBulb:Neutral,7
+SmartSpeaker:70,RTP Antena 1 98.3 FM,Bowers&Wilkins
+SmartBulb:Warm,15
+Divisao:Sala de Jantar
+SmartSpeaker:40,RTP Antena 1 98.3 FM,Marshall
+Divisao:Sala de Estar 1
+SmartBulb:Neutral,11
+SmartSpeaker:55,TSF Radio Noticias,Bowers&Wilkins
+SmartSpeaker:42,Cidade FM,Goodis
+SmartBulb:Neutral,7
+SmartBulb:Neutral,6
+SmartBulb:Neutral,19
+SmartBulb:Neutral,12
+SmartBulb:Neutral,13
+SmartSpeaker:60,Radio Comercial,LG
+SmartSpeaker:69,Radio Radar,Bang&Olufsen
+Divisao:Escritorio
+SmartBulb:Warm,18
+SmartCamera:(3840x2160),54
+Divisao:Casa de Banho
+SmartBulb:Warm,9
+SmartBulb:Neutral,15
+SmartBulb:Cold,15
+SmartCamera:(1280x720),95
+SmartBulb:Neutral,8
+SmartCamera:(2160x1440),85
+Divisao:Quarto
+SmartBulb:Neutral,7
+SmartCamera:(1280x720),117
+Divisao:Sala de Estar 2
+SmartBulb:Warm,19
+SmartCamera:(2160x1440),21
+SmartSpeaker:45,Radio Radar,JBL
+SmartBulb:Cold,10
+SmartCamera:(1366x768),7
+SmartBulb:Neutral,16
+SmartBulb:Neutral,18
+Divisao:Escritorio 1
+SmartBulb:Neutral,8
+SmartBulb:Neutral,20
+SmartBulb:Neutral,9
+SmartBulb:Neutral,19
+SmartSpeaker:30,TSF Radio Noticias,Philips
+SmartBulb:Neutral,18
+SmartSpeaker:49,TSF Radio Noticias,Goodis
+SmartBulb:Neutral,6
+SmartCamera:(1280x720),33
+Divisao:Sala de Jantar 1
+SmartBulb:Neutral,7
+SmartCamera:(2160x1440),26
