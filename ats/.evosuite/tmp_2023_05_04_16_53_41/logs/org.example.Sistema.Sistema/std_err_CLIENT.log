@@ -1,8 +1,0 @@
-[MASTER] 16:53:49.564 [pool-2-thread-1] ERROR TestCluster - Failed to check cache for java.util.LinkedList<E> : Type points to itself
-[MASTER] 16:53:49.565 [pool-2-thread-1] ERROR TestCluster - Failed to check cache for java.util.List<E> : Type points to itself
-[MASTER] 16:53:53.119 [pool-2-thread-1] ERROR TestCluster - Failed to check cache for java.util.function.Function<T, R> : Type points to itself
-[MASTER] 16:53:54.695 [pool-2-thread-1] ERROR TestCluster - Failed to check cache for java.time.temporal.TemporalQuery<R> : Type points to itself
-[MASTER] 16:54:10.214 [pool-2-thread-1] ERROR TestCluster - Failed to check cache for java.util.Comparator<T> : Type points to itself
-[MASTER] 16:55:19.760 [pool-2-thread-1] ERROR TestCluster - Failed to check cache for java.util.Set<E> : Type points to itself
-[MASTER] 16:56:35.982 [TEST_EXECUTION_THREAD_0] ERROR AbstractStatement - Error assigning value of type TemporalQuery[] defined at statement TemporalQuery<Sistema>[] temporalQueryArray0 = (TemporalQuery<Sistema>[]) Array.newInstance(TemporalQuery.class, 9), assignment statement: temporalQueryArray0[0] = (TemporalQuery<Sistema>) temporalQueryArray0; SUT=org.example.Sistema.Sistema
-[MASTER] 16:56:40.641 [TEST_EXECUTION_THREAD_0] ERROR AbstractStatement - Error assigning value of type TemporalQuery[] defined at statement TemporalQuery<Object>[] temporalQueryArray0 = (TemporalQuery<Object>[]) Array.newInstance(TemporalQuery.class, 1), assignment statement: temporalQueryArray0[0] = (TemporalQuery<Object>) temporalQueryArray0; SUT=org.example.Sistema.Sistema

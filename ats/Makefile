@@ -1,11 +1,11 @@
 MVN = mvn
-EVOSUITE_DIR = ./.evosuite/
-JACOCO_DIR = ./coverage/
-PITEST_DIR = ./pit/
+EVOSUITE_DIR = ./evojar
+JACOCO_DIR = ./coverage
+PITEST_DIR = ./pit
 
 default: all
 
-all: run pitest evosuite jacoco
+all: run evosuite pitest jacoco
 
 install:
 	mvn clean install
@@ -17,14 +17,18 @@ run-debug:
 	$(MVN) -X exec:java -Dexec.mainClass=org.example.Main
 
 evosuite:
-	java -jar $(EVOSUITE_DIR)/evosuite.jar -target target/classes -class org.example.*
+	for class in {"CasaInteligente.CasaInteligente","Fatura.Fatura","Fornecedor.Fornecedor","SmartDevice.SmartDevice"}; do \
+		java -jar ${EVOSUITE_DIR}/evosuite-1.0.6.jar -target target/classes/ -class "org.example.$${class}"; \
+	done
 
 jacoco:
 	java -jar $(JACOCO_DIR)/jacoco.jar report jacoco.exec --classfiles target/classes --sourcefiles src/main/java --html jacoco-report
 
 pitest:
-	java -jar $(PITEST_DIR)/pitest.jar --classUnderTest org.example.* --targetClasses org.example.* --sourceDirs src/main/java --outputFormats CSV,HTML --reportDir ./pitest-report
-
+	java -jar $(PITEST_DIR)/pitest.jar --classUnderTest org.example.CasaInteligente.* --targetClasses org.example.* --sourceDirs src/main/java --outputFormats CSV,HTML --reportDir ./pitest-report
+	java -jar $(PITEST_DIR)/pitest.jar --classUnderTest org.example.Fatura.* --targetClasses org.example.* --sourceDirs src/main/java --outputFormats CSV,HTML --reportDir ./pitest-report
+	java -jar $(PITEST_DIR)/pitest.jar --classUnderTest org.example.Fornecedor.* --targetClasses org.example.* --sourceDirs src/main/java --outputFormats CSV,HTML --reportDir ./pitest-report
+	java -jar $(PITEST_DIR)/pitest.jar --classUnderTest org.example.SmartDevice.* --targetClasses org.example.* --sourceDirs src/main/java --outputFormats CSV,HTML --reportDir ./pitest-report
 test:
 	$(MVN) test
 
@@ -36,4 +40,4 @@ test-with-mutation:
 
 clean:
 	$(MVN) clean
-	rm -rf $(EVOSUITE_DIR)/evosuite-report $(JACOCO_DIR)/jacoco-report $(PITEST_DIR)/target
+	rm -rf org.example.test.java/evosuite-report $(JACOCO_DIR)/jacoco-report $(PITEST_DIR)/target
