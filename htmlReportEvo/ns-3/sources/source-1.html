@@ -1,0 +1,250 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Fornecedor</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example.Fornecedor</a>
+</div>
+
+<h1>Coverage Summary for Class: Fornecedor (org.example.Fornecedor)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Fornecedor</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (18/18)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (62/62)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example.Fornecedor;
+&nbsp;
+&nbsp;import org.example.Fatura.*;
+&nbsp;
+&nbsp;import java.io.Serializable;
+&nbsp;import java.util.*;
+&nbsp;import java.util.stream.Collectors;
+&nbsp;
+&nbsp;public abstract class Fornecedor implements Serializable {
+&nbsp;    // @Serial
+&nbsp;    private static final long serialVersionUID = 9999L;
+&nbsp;    private final String nome;
+&nbsp;    private double precoBase;
+&nbsp;    private double imposto;
+&nbsp;    private double multiplicador;
+&nbsp;    private Map&lt;Integer, List&lt;Fatura&gt;&gt; faturas;
+&nbsp;
+<b class="fc">&nbsp;    public Fornecedor() {</b>
+<b class="fc">&nbsp;        this.nome = &quot;&quot;;</b>
+<b class="fc">&nbsp;        this.precoBase = 0.;</b>
+<b class="fc">&nbsp;        this.imposto = 0.;</b>
+<b class="fc">&nbsp;        this.multiplicador = 0.;</b>
+<b class="fc">&nbsp;        this.faturas = new HashMap&lt;&gt;();</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public Fornecedor(</b>
+&nbsp;            String nome,
+&nbsp;            double precoBase,
+&nbsp;            double imposto,
+&nbsp;            double multiplicador
+&nbsp;    ) {
+<b class="fc">&nbsp;        this.nome = nome;</b>
+<b class="fc">&nbsp;        this.precoBase = precoBase;</b>
+<b class="fc">&nbsp;        this.imposto = imposto;</b>
+<b class="fc">&nbsp;        this.multiplicador = multiplicador;</b>
+<b class="fc">&nbsp;        this.faturas = new HashMap&lt;Integer, List&lt;Fatura&gt;&gt;();</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public Fornecedor(</b>
+&nbsp;            String nome,
+&nbsp;            double precoBase,
+&nbsp;            double imposto,
+&nbsp;            double multiplicador,
+&nbsp;            Map&lt;Integer, List&lt;Fatura&gt;&gt; faturas) {
+<b class="fc">&nbsp;        this.nome = nome;</b>
+<b class="fc">&nbsp;        this.precoBase = precoBase;</b>
+<b class="fc">&nbsp;        this.imposto = imposto;</b>
+<b class="fc">&nbsp;        this.multiplicador = multiplicador;</b>
+<b class="fc">&nbsp;        this.setFaturas(faturas);</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public Fornecedor(Fornecedor that) {</b>
+<b class="fc">&nbsp;        this.nome = that.getNome();</b>
+<b class="fc">&nbsp;        this.precoBase = that.getPrecoBase();</b>
+<b class="fc">&nbsp;        this.imposto = that.getImposto();</b>
+<b class="fc">&nbsp;        this.multiplicador = that.getMultiplicador();</b>
+<b class="fc">&nbsp;        this.faturas = that.getFaturas();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getNome() {
+<b class="fc">&nbsp;        return nome;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getPrecoBase() {
+<b class="fc">&nbsp;        return precoBase;</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public void setPrecoBase(float precoBase) { this.precoBase = precoBase; }</b>
+&nbsp;
+&nbsp;    public double getImposto() {
+<b class="fc">&nbsp;        return imposto;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setImposto(float imposto) {
+<b class="fc">&nbsp;        this.imposto = imposto;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getMultiplicador() {
+<b class="fc">&nbsp;        return multiplicador;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setMultiplicador(float multiplicador) {
+<b class="fc">&nbsp;        this.multiplicador = multiplicador;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setFaturas(Map&lt;Integer, List&lt;Fatura&gt;&gt; faturas) {
+<b class="fc">&nbsp;        Map&lt;Integer, List&lt;Fatura&gt;&gt; f = new HashMap&lt;&gt;();</b>
+<b class="fc">&nbsp;        for(int i: this.faturas.keySet()) {</b>
+<b class="fc">&nbsp;            List&lt;Fatura&gt; l = this.faturas.get(i)</b>
+<b class="fc">&nbsp;                    .stream()</b>
+<b class="fc">&nbsp;                    .map(Fatura::clone)</b>
+<b class="fc">&nbsp;                    .collect(Collectors.toList());</b>
+<b class="fc">&nbsp;            f.put(i, l);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        this.faturas = f;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;Integer, List&lt;Fatura&gt;&gt; getFaturas() {
+<b class="fc">&nbsp;        Map&lt;Integer, List&lt;Fatura&gt;&gt; r = new HashMap&lt;&gt;();</b>
+&nbsp;
+<b class="fc">&nbsp;        for(int i: this.faturas.keySet()) {</b>
+<b class="fc">&nbsp;            List&lt;Fatura&gt; l = this.faturas.get(i)</b>
+<b class="fc">&nbsp;                    .stream()</b>
+<b class="fc">&nbsp;                    .map(Fatura::clone)</b>
+<b class="fc">&nbsp;                    .collect(Collectors.toList());</b>
+<b class="fc">&nbsp;            r.put(i, l);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return r;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Fatura&gt; getFaturasDoNIF(int nif) {
+<b class="fc">&nbsp;        return this.faturas.get(nif)</b>
+<b class="fc">&nbsp;                .stream()</b>
+<b class="fc">&nbsp;                .map(Fatura::clone)</b>
+<b class="fc">&nbsp;                .collect(Collectors.toList());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void addFatura(int nif, Fatura f) {
+<b class="fc">&nbsp;        this.faturas.computeIfAbsent(nif, k -&gt; new ArrayList&lt;&gt;());</b>
+<b class="fc">&nbsp;        this.faturas.get(nif).add(f.clone());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean TemFaturas() {
+<b class="fc">&nbsp;        return this.faturas.values().size()!=0;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public boolean equals(Object o) {
+<b class="fc">&nbsp;        if (this == o) return true;</b>
+<b class="fc">&nbsp;        if (o == null || getClass() != o.getClass()) return false;</b>
+<b class="fc">&nbsp;        Fornecedor fornecedor = (Fornecedor) o;</b>
+<b class="fc">&nbsp;        return Double.compare(fornecedor.precoBase, precoBase) == 0</b>
+<b class="fc">&nbsp;                &amp;&amp; Double.compare(fornecedor.imposto, imposto) == 0</b>
+<b class="fc">&nbsp;                &amp;&amp; Double.compare(fornecedor.multiplicador, multiplicador) == 0</b>
+<b class="fc">&nbsp;                &amp;&amp; Objects.equals(nome, fornecedor.nome);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public int hashCode() {
+<b class="fc">&nbsp;        return Objects.hash(nome, precoBase, imposto, multiplicador);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    abstract public Fornecedor clone();
+&nbsp;
+&nbsp;    public abstract double precoDiaPorDispositivo(int numeroDispositivos, double consumoDispositivo);
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-17 00:04</div>
+</div>
+</body>
+</html>

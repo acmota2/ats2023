@@ -1,0 +1,260 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > NewMenu</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example.Main</a>
+</div>
+
+<h1>Coverage Summary for Class: NewMenu (org.example.Main)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">NewMenu</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/36)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">NewMenu$Handler</td>
+  </tr>
+  <tr>
+    <td class="name">NewMenu$PreCondition</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/36)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example.Main;
+&nbsp;
+&nbsp;import java.io.FileNotFoundException;
+&nbsp;import java.io.IOException;
+&nbsp;import java.time.LocalDate;
+&nbsp;import java.time.format.DateTimeFormatter;
+&nbsp;import java.time.format.DateTimeParseException;
+&nbsp;
+&nbsp;import org.example.Fornecedor.*;
+&nbsp;import org.example.Sistema.*;
+&nbsp;import org.example.CasaInteligente.*;
+&nbsp;import org.example.SmartDevice.*;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.Arrays;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Scanner;
+&nbsp;
+&nbsp;public class NewMenu {
+&nbsp;
+&nbsp;        private Sistema sistema;
+&nbsp;
+<b class="nc">&nbsp;        public NewMenu() {</b>
+<b class="nc">&nbsp;            this.sistema=new Sistema();</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        /**
+&nbsp;         * Functional interface para handlers.
+&nbsp;         */
+&nbsp;        public interface Handler {  // método de tratamento
+&nbsp;            public void execute();
+&nbsp;        }
+&nbsp;
+&nbsp;        /**
+&nbsp;         * Functional interface para pré-condições.
+&nbsp;         */
+&nbsp;        public interface PreCondition {  // Predicate ?
+&nbsp;            public boolean validate();
+&nbsp;        }
+&nbsp;
+&nbsp;        // Varíável de classe para suportar leitura
+<b class="nc">&nbsp;        private static Scanner is = new Scanner(System.in);</b>
+<b class="nc">&nbsp;        private static Scanner scanner = new Scanner(System.in);</b>
+&nbsp;
+&nbsp;        // Variáveis de instância
+&nbsp;        private List&lt;String&gt; opcoes;            // Lista de opções
+&nbsp;        private List&lt;PreCondition&gt; disponivel;  // Lista de pré-condições
+&nbsp;        private List&lt;Handler&gt; handlers;         // Lista de handlers
+&nbsp;
+&nbsp;        // Construtor
+&nbsp;
+&nbsp;        /**
+&nbsp;         * Constructor for objects of class NewMenu
+&nbsp;         */
+<b class="nc">&nbsp;        public NewMenu(String[] opcoes) {</b>
+<b class="nc">&nbsp;            this.opcoes = Arrays.asList(opcoes);</b>
+<b class="nc">&nbsp;            this.disponivel = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;            this.handlers = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;            this.opcoes.forEach(s -&gt; {</b>
+<b class="nc">&nbsp;                this.disponivel.add(() -&gt; true);</b>
+<b class="nc">&nbsp;                this.handlers.add(() -&gt; System.out.println(&quot;\nATENÇÃO: Opção não implementada!&quot;));</b>
+&nbsp;
+&nbsp;            });
+&nbsp;        }
+&nbsp;
+&nbsp;        // Métodos de instância
+&nbsp;
+&nbsp;        /**
+&nbsp;         * Correr o NewMenu.
+&nbsp;         * &lt;p&gt;
+&nbsp;         * Termina com a opção 0 (zero).
+&nbsp;         */
+&nbsp;        public void run() {
+&nbsp;            int op;
+&nbsp;            do {
+<b class="nc">&nbsp;                show();</b>
+<b class="nc">&nbsp;                op = readOption();</b>
+&nbsp;                // testar pré-condição
+<b class="nc">&nbsp;                if (op &gt; 0 &amp;&amp; !this.disponivel.get(op - 1).validate()) {</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;Opção indisponível! Tente novamente.&quot;);</b>
+<b class="nc">&nbsp;                } else if (op &gt; 0) {</b>
+&nbsp;                    // executar handler
+<b class="nc">&nbsp;                    this.handlers.get(op - 1).execute();</b>
+&nbsp;                }
+<b class="nc">&nbsp;            } while (op != 0);</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        /**
+&nbsp;         * Método que regista uma uma pré-condição numa opção do NewMenu.
+&nbsp;         *
+&nbsp;         * @param i índice da opção (começa em 1)
+&nbsp;         * @param b pré-condição a registar
+&nbsp;         */
+&nbsp;        public void setPreCondition(int i, PreCondition b) {
+<b class="nc">&nbsp;            this.disponivel.set(i - 1, b);</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        /**
+&nbsp;         * Método para registar um handler numa opção do NewMenu.
+&nbsp;         *
+&nbsp;         * @param i indice da opção  (começa em 1)
+&nbsp;         * @param h handlers a registar
+&nbsp;         */
+&nbsp;        public void setHandler(int i, Handler h) {
+<b class="nc">&nbsp;            this.handlers.set(i - 1, h);</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        // Métodos auxiliares
+&nbsp;
+&nbsp;        /**
+&nbsp;         * Apresentar o NewMenu
+&nbsp;         */
+&nbsp;        private void show() {
+<b class="nc">&nbsp;            System.out.println(&quot;--------------------------------------------&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;                    Menu                    &quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;--------------------------------------------&quot;);</b>
+<b class="nc">&nbsp;            for (int i = 0; i &lt; this.opcoes.size(); i++) {</b>
+<b class="nc">&nbsp;                System.out.print(i + 1);</b>
+<b class="nc">&nbsp;                System.out.print(&quot; - &quot;);</b>
+<b class="nc">&nbsp;                System.out.println(this.disponivel.get(i).validate() ? this.opcoes.get(i) : &quot;---&quot;);</b>
+&nbsp;            }
+<b class="nc">&nbsp;            System.out.println(&quot;0 - Sair&quot;);</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        /**
+&nbsp;         * Ler uma opção válida
+&nbsp;         */
+&nbsp;        private int readOption() {
+&nbsp;            int op;
+&nbsp;            //Scanner is = new Scanner(System.in);
+&nbsp;
+<b class="nc">&nbsp;            System.out.print(&quot;Opção: &quot;);</b>
+&nbsp;            try {
+<b class="nc">&nbsp;                op = is.nextInt();</b>
+<b class="nc">&nbsp;            } catch (NumberFormatException e) { // Não foi inscrito um int</b>
+<b class="nc">&nbsp;                op = -1;</b>
+&nbsp;            }
+<b class="nc">&nbsp;            if (op &lt; 0 || op &gt; this.opcoes.size()) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Opção Inválida!!!&quot;);</b>
+<b class="nc">&nbsp;                op = -1;</b>
+&nbsp;            }
+<b class="nc">&nbsp;            return op;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-17 00:04</div>
+</div>
+</body>
+</html>

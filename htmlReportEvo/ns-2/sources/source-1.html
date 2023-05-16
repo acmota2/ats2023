@@ -1,0 +1,203 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Fatura</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example.Fatura</a>
+</div>
+
+<h1>Coverage Summary for Class: Fatura (org.example.Fatura)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Fatura</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (15/15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (40/40)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example.Fatura;
+&nbsp;
+&nbsp;
+&nbsp;import java.io.Serializable;
+&nbsp;import java.time.LocalDate;
+&nbsp;import java.util.Objects;
+&nbsp;
+&nbsp;public class Fatura implements Comparable&lt;Fatura&gt; , Serializable {
+&nbsp;    //@Serial
+&nbsp;    private static final long serialVersionUID = 9999L;
+&nbsp;
+&nbsp;    private int NIF;
+&nbsp;    private double valorFaturacao;
+&nbsp;    private LocalDate data_inicio;
+&nbsp;    private LocalDate data_fim;
+&nbsp;
+<b class="fc">&nbsp;    public Fatura() {</b>
+<b class="fc">&nbsp;        this.NIF=0;</b>
+<b class="fc">&nbsp;        this.valorFaturacao=0;</b>
+<b class="fc">&nbsp;        this.data_inicio= LocalDate.now();</b>
+<b class="fc">&nbsp;        this.data_fim= LocalDate.now() ;</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public Fatura(int NIF, double valorFaturacao, LocalDate data_inicio, LocalDate data_fim) {</b>
+<b class="fc">&nbsp;        this.NIF = NIF;</b>
+<b class="fc">&nbsp;        this.valorFaturacao = valorFaturacao;</b>
+<b class="fc">&nbsp;        this.setData_inicio(data_inicio);</b>
+<b class="fc">&nbsp;        this.setData_fim(data_fim);</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public Fatura (Fatura a ) {</b>
+<b class="fc">&nbsp;        this.NIF=a.NIF;</b>
+<b class="fc">&nbsp;        this.valorFaturacao=a.valorFaturacao;</b>
+<b class="fc">&nbsp;        this.data_inicio= a.getData_inicio();</b>
+<b class="fc">&nbsp;        this.data_fim= a.getData_fim();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getNIF() {
+<b class="fc">&nbsp;        return NIF;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setNIF(int NIF) {
+<b class="fc">&nbsp;        this.NIF = NIF;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getValorFaturacao() {
+<b class="fc">&nbsp;        return valorFaturacao;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setValorFaturacao(double valorFaturacao) {
+<b class="fc">&nbsp;        this.valorFaturacao = valorFaturacao;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public LocalDate getData_inicio() {
+<b class="fc">&nbsp;        return LocalDate.from(this.data_inicio);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setData_inicio(LocalDate data) {
+<b class="fc">&nbsp;        this.data_inicio= LocalDate.from(data);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public LocalDate getData_fim() {
+<b class="fc">&nbsp;        return LocalDate.from (this.data_fim);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setData_fim(LocalDate data) {
+<b class="fc">&nbsp;        this.data_fim = LocalDate.from(data);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int compareTo(Fatura that) {
+<b class="fc">&nbsp;        double compare = this.valorFaturacao - that.valorFaturacao;</b>
+<b class="fc">&nbsp;        if(compare &lt; 0) {</b>
+<b class="fc">&nbsp;            return -1;</b>
+<b class="fc">&nbsp;        } else if(compare == 0) {</b>
+<b class="fc">&nbsp;            return 0;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return 1;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public boolean equals(Object o) {
+<b class="fc">&nbsp;        if (this == o) return true;</b>
+<b class="fc">&nbsp;        if (o == null || getClass() != o.getClass()) return false;</b>
+<b class="fc">&nbsp;        Fatura fatura = (Fatura) o;</b>
+<b class="fc">&nbsp;        return this.getNIF() == fatura.getNIF() &amp;&amp; fatura.getValorFaturacao() == this.getValorFaturacao() &amp;&amp; Objects.equals(getData_inicio(), fatura.getData_inicio()) &amp;&amp; Objects.equals(getData_fim(), fatura.getData_fim());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String toString() {
+<b class="fc">&nbsp;        return &quot;Fatura{&quot; +</b>
+<b class="fc">&nbsp;                &quot;NIF=&quot; + NIF +</b>
+<b class="fc">&nbsp;                &quot;, valorFaturação=&quot; + valorFaturacao +</b>
+<b class="fc">&nbsp;                &quot;, data_inicio=&quot; + data_inicio +</b>
+<b class="fc">&nbsp;                &quot;, data_fim=&quot; + data_fim +</b>
+<b class="fc">&nbsp;                &#39;}&#39; +&#39;\n&#39;;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Fatura clone() {
+<b class="fc">&nbsp;        return new Fatura(this);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-17 00:04</div>
+</div>
+</body>
+</html>

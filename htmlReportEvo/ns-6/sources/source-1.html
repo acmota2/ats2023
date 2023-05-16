@@ -1,0 +1,215 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SmartBulb</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example.SmartDevice</a>
+</div>
+
+<h1>Coverage Summary for Class: SmartBulb (org.example.SmartDevice)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SmartBulb</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    83.3%
+  </span>
+  <span class="absValue">
+    (10/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    90%
+  </span>
+  <span class="absValue">
+    (27/30)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;
+&nbsp;package org.example.SmartDevice;
+&nbsp;
+&nbsp;/*********************************************************************************/
+&nbsp;/** DISCLAIMER: Este código foi criado e alterado durante as aulas práticas      */
+&nbsp;/** de org.example. Representa uma solução em construção, com base na matéria leccionada */ 
+&nbsp;/** até ao momento da sua elaboração, e resulta da discussão e experimentação    */
+&nbsp;/** durante as aulas. Como tal, não deverá ser visto como uma solução canónica,  */
+&nbsp;/** ou mesmo acabada. É disponibilizado para auxiliar o processo de estudo.      */
+&nbsp;/** Os alunos são encorajados a testar adequadamente o código fornecido e a      */
+&nbsp;/** procurar soluções alternativas, à medida que forem adquirindo mais           */
+&nbsp;/** conhecimentos de org.example.                                                        */
+&nbsp;/*********************************************************************************/
+&nbsp;
+&nbsp;import java.io.Serializable;
+&nbsp;
+&nbsp;/**
+&nbsp; * Uma SmartBulb é uma lâmpada inteligente que além de ligar e desligar (já que
+&nbsp; * é subclasse de SmartDevice) também permite escolher a intensidade da iluminação 
+&nbsp; * (a cor da mesma).
+&nbsp; *
+&nbsp; * @author (your name)
+&nbsp; * @version (a version number or a date)
+&nbsp; */
+&nbsp;public class SmartBulb extends SmartDevice implements Serializable {
+&nbsp;    //@Serial
+&nbsp;    private static final long serialVersionUID = 9999L;
+&nbsp;
+&nbsp;    public static final int WARM = 2;
+&nbsp;    public static final int NEUTRAL = 1;
+&nbsp;    public static final int COLD = 0;
+&nbsp;    
+&nbsp;    private int tone;
+&nbsp;    private double height;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Constructor for objects of class SmartBulb
+&nbsp;     */
+&nbsp;    public SmartBulb() {
+&nbsp;        // initialise instance variables
+<b class="fc">&nbsp;        super();</b>
+<b class="fc">&nbsp;        this.tone = NEUTRAL;</b>
+<b class="fc">&nbsp;        this.height=0;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public SmartBulb(String id, int tone, double height) {
+&nbsp;        // initialise instance variables
+<b class="fc">&nbsp;        super(id);</b>
+<b class="fc">&nbsp;        this.tone =tone;</b>
+<b class="fc">&nbsp;        this.height= height;</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    public SmartBulb(String id) {
+&nbsp;        // initialise instance variables
+<b class="fc">&nbsp;        super(id);</b>
+<b class="fc">&nbsp;        this.tone = NEUTRAL;</b>
+<b class="fc">&nbsp;        this.height =0;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public SmartBulb(SmartBulb c) {
+&nbsp;        // initialise instance variables
+<b class="fc">&nbsp;        super(c.getID(), c.getOn());</b>
+<b class="fc">&nbsp;        this.tone = c.tone;</b>
+<b class="fc">&nbsp;        this.height= c.height;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setTone(int t) {
+<b class="nc">&nbsp;        if (t&gt;=WARM) this.tone = WARM;</b>
+<b class="nc">&nbsp;        else this.tone = Math.max(t, COLD);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getTone() {
+<b class="fc">&nbsp;        return this.tone;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getHeight() {
+<b class="nc">&nbsp;        return height;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setHeight(double height) {
+<b class="fc">&nbsp;        this.height = height;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public boolean equals(Object o) {
+<b class="fc">&nbsp;        if (this == o) return true;</b>
+<b class="fc">&nbsp;        if (o == null || getClass() != o.getClass()) return false;</b>
+<b class="fc">&nbsp;        SmartBulb smartBulb = (SmartBulb) o;</b>
+<b class="fc">&nbsp;        return super.equals(smartBulb)</b>
+<b class="fc">&nbsp;                &amp;&amp; this.getTone() == smartBulb.getTone()</b>
+<b class="fc">&nbsp;                &amp;&amp; this.height == smartBulb.height;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="fc">&nbsp;        return &quot;SmartBulb{&quot; +</b>
+<b class="fc">&nbsp;                super.toString() +</b>
+<b class="fc">&nbsp;                &quot;, tone=&#39;&quot; + tone +  &#39;\&#39;&#39; +</b>
+<b class="fc">&nbsp;                &quot;, height=&#39;&quot; + height + &#39;\&#39;&#39; +</b>
+<b class="fc">&nbsp;                &#39;}&#39;;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public SmartBulb clone() {
+<b class="fc">&nbsp;        return new SmartBulb (this);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getConsume(){
+<b class="fc">&nbsp;        return 0.32 + this.tone*0.02 + this.height*0.005;</b>
+&nbsp;    }
+&nbsp;}
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-17 00:04</div>
+</div>
+</body>
+</html>

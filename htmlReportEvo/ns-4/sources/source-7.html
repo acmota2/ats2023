@@ -1,0 +1,429 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Main</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example.Main</a>
+</div>
+
+<h1>Coverage Summary for Class: Main (org.example.Main)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Main</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/19)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/222)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example.Main;
+&nbsp;
+&nbsp;import org.example.CasaInteligente.*;
+&nbsp;import org.example.SmartDevice.*;
+&nbsp;import org.example.Sistema.*;
+&nbsp;import java.io.FileNotFoundException;
+&nbsp;import java.io.IOException;
+&nbsp;import java.io.NotSerializableException;
+&nbsp;import java.time.LocalDate;
+&nbsp;import java.time.format.DateTimeFormatter;
+&nbsp;import java.time.format.DateTimeParseException;
+&nbsp;import java.util.Scanner;
+&nbsp;
+<b class="nc">&nbsp;public class Main {</b>
+<b class="nc">&nbsp;    private static Scanner is = new Scanner(System.in);//Para Números</b>
+<b class="nc">&nbsp;    private static Scanner scanner = new Scanner(System.in);//Para strings</b>
+&nbsp;    private static final double imposto=0.23;
+&nbsp;    private static final double valorbase=0.149;
+&nbsp;
+&nbsp;    public static void main(String[] args) {
+&nbsp;
+<b class="nc">&nbsp;        Controller controller = new Controller();</b>
+&nbsp;
+<b class="nc">&nbsp;        NewMenu menuInicial = new NewMenu(new String[]{</b>
+<b class="nc">&nbsp;                &quot;Inserir Fornecedor&quot;,</b>
+<b class="nc">&nbsp;                &quot;Inserir Casa Inteligente&quot;,</b>
+<b class="nc">&nbsp;                &quot;Inserir um SmartDevice&quot;,</b>
+<b class="nc">&nbsp;                &quot;Salvar dados em ficheiro&quot;,</b>
+<b class="nc">&nbsp;                &quot;Simulação de faturas&quot;,</b>
+<b class="nc">&nbsp;                &quot;Cálculo de Estatísticas&quot;,</b>
+<b class="nc">&nbsp;                &quot;Carregar estado de programa&quot;,</b>
+<b class="nc">&nbsp;                &quot;Carregar automatização de simulação&quot;,</b>
+<b class="nc">&nbsp;                &quot;Listar os dados&quot;,</b>
+<b class="nc">&nbsp;                &quot;Adicionar a partir de ficheiro de texto&quot;,</b>
+<b class="nc">&nbsp;                &quot;Alterar o fornecedor de uma casa&quot;</b>
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        NewMenu menuDevices = new NewMenu(new String[]{</b>
+<b class="nc">&nbsp;                &quot;Inserir um SmartBulb&quot;,</b>
+<b class="nc">&nbsp;                &quot;Inserir um SmartSpeaker&quot;,</b>
+<b class="nc">&nbsp;                &quot;Inserir uma SmartCamera&quot;</b>
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        menuDevices.setHandler(1,()-&gt; {</b>
+&nbsp;            try {
+<b class="nc">&nbsp;                System.out.println(&quot;Insira o NIF do proprietário da Casa:&quot;);</b>
+<b class="nc">&nbsp;                int nif = is.nextInt();</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Insira o nome da Divisão da casa a que pretende adicionar o SmartBulb:&quot;);</b>
+<b class="nc">&nbsp;                String nomeDivisao = scanner.nextLine();</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Insira o nome do dispositivo&quot;);</b>
+<b class="nc">&nbsp;                String nome = scanner.nextLine();</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Insira o tamanho da Lâmpada (em cm) &quot;);</b>
+<b class="nc">&nbsp;                double height = is.nextDouble();</b>
+<b class="nc">&nbsp;                int tom = 0;</b>
+<b class="nc">&nbsp;                for (int i = 0; tom &lt; 1 || tom &gt; 3; i++) {</b>
+<b class="nc">&nbsp;                    if (i &gt; 0)</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;A opção escolhida não se encontra nas opções disponíveis!\n&quot;);</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;Insira o tom da Lâmpada:&quot;);</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;1-&gt; Tom Frio&quot;);</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;2-&gt; Tom Médio&quot;);</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;3-&gt; Tom Quente&quot;);</b>
+<b class="nc">&nbsp;                    tom = is.nextInt();</b>
+&nbsp;                }
+<b class="nc">&nbsp;                SmartBulb smartbulb = new SmartBulb(nome, tom, height);</b>
+<b class="nc">&nbsp;                controller.addDevice(nif, nomeDivisao, smartbulb);</b>
+<b class="nc">&nbsp;            } catch (NumberFormatException e) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;O último dado introduzido não está na forma correta. Não foi possível adicionar o dispositivo!&quot;);</b>
+<b class="nc">&nbsp;            } catch (DispositivoExisteNaDivisaoException e) {</b>
+<b class="nc">&nbsp;                System.out.println(e.getMessage() + &quot;Não foi possível adicionar o dispositivo!&quot;);</b>
+<b class="nc">&nbsp;            } catch (NullPointerException e) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;O proprietário do NIF não possui nenhuma casa! Não foi possível adicionar o dispositivo!&quot;);</b>
+&nbsp;            }
+&nbsp;
+&nbsp;        });
+<b class="nc">&nbsp;        menuDevices.setHandler(2,()-&gt; {</b>
+&nbsp;                    try {
+<b class="nc">&nbsp;                        Scanner scanner = new Scanner(System.in);</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Insira o NIF do proprietário da Casa:&quot;);</b>
+<b class="nc">&nbsp;                        int nif = is.nextInt();</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Insira o nome da Divisão da casa a que pretende adicionar o SmartSpeaker:&quot;);</b>
+<b class="nc">&nbsp;                        String nomeDivisao = scanner.nextLine();</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Insira o nome do dispositivo&quot;);</b>
+<b class="nc">&nbsp;                        String nome = scanner.nextLine();</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Insira a marca do dispositivo&quot;);</b>
+<b class="nc">&nbsp;                        String brand = scanner.nextLine();</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Insira o Canal de rádio atual do dispositivo&quot;);</b>
+<b class="nc">&nbsp;                        String channel = scanner.nextLine();</b>
+<b class="nc">&nbsp;                        int volume = -1;</b>
+<b class="nc">&nbsp;                        for (int i = 0; volume &lt; 0 || volume &gt; 20; i++) {</b>
+<b class="nc">&nbsp;                            if (i &gt; 0)</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;O volume selecionado não é um volume válido!\n&quot;);</b>
+<b class="nc">&nbsp;                            System.out.println(&quot;Insira o volume do dispositivo (volume Mínimo: 0 , volume Máximo: 20)&quot;);</b>
+<b class="nc">&nbsp;                            volume = is.nextInt();</b>
+&nbsp;                        }
+<b class="nc">&nbsp;                        SmartSpeaker smartspeaker = new SmartSpeaker(nome, volume, channel, brand);</b>
+<b class="nc">&nbsp;                        controller.addDevice(nif, nomeDivisao, smartspeaker);</b>
+<b class="nc">&nbsp;                    } catch (NumberFormatException e) {</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;O último dado introduzido não está na forma correta. Não foi possível adicionar o dispositivo!&quot;);</b>
+<b class="nc">&nbsp;                    } catch (DispositivoExisteNaDivisaoException e) {</b>
+<b class="nc">&nbsp;                        System.out.println(e.getMessage() + &quot;Não foi possível adicionar o dispositivo!&quot;);</b>
+<b class="nc">&nbsp;                    } catch (NullPointerException e) {</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;O proprietário do NIF não possui nenhuma casa! Não foi possível adicionar o dispositivo!&quot;);</b>
+&nbsp;                    }
+&nbsp;                });
+&nbsp;
+<b class="nc">&nbsp;                menuDevices.setHandler(3,()-&gt; {</b>
+&nbsp;                    try {
+<b class="nc">&nbsp;                        Scanner scanner = new Scanner(System.in);</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Insira o NIF do proprietário da Casa:&quot;);</b>
+<b class="nc">&nbsp;                        int nif = is.nextInt();</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Insira o nome da Divisão da casa a que pretende adicionar a SmartCamera:&quot;);</b>
+<b class="nc">&nbsp;                        String nomeDivisao = scanner.nextLine();</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Insira o nome do dispositivo&quot;);</b>
+<b class="nc">&nbsp;                        String nome = scanner.nextLine();</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Insira o tamanho do ficheiro da camara (em Gigabytes):&quot;);</b>
+<b class="nc">&nbsp;                        int size = is.nextInt();</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Insira a resolução da câmara:&quot;);</b>
+<b class="nc">&nbsp;                        String resolution = scanner.nextLine();</b>
+<b class="nc">&nbsp;                        SmartCamera smartcamera = new SmartCamera(nome, resolution, size);</b>
+<b class="nc">&nbsp;                        controller.addDevice(nif, nomeDivisao, smartcamera);</b>
+<b class="nc">&nbsp;                    } catch (NumberFormatException e) {</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;O último dado introduzido não está na forma correta. Não foi possível adicionar o dispositivo!&quot;);</b>
+<b class="nc">&nbsp;                    } catch (DispositivoExisteNaDivisaoException e) {</b>
+<b class="nc">&nbsp;                        System.out.println(e.getMessage() + &quot;Não foi possível adicionar o dispositivo!&quot;);</b>
+<b class="nc">&nbsp;                    } catch (NullPointerException e) {</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;O proprietário do NIF não possui nenhuma casa! Não foi possível adicionar o dispositivo!&quot;);</b>
+&nbsp;                    }
+&nbsp;                });
+&nbsp;
+<b class="nc">&nbsp;        NewMenu menuQueries = new NewMenu(new String[]{</b>
+<b class="nc">&nbsp;                &quot;Qual  ́e a casa que mais gastou num Periodo de Tempo&quot;,</b>
+<b class="nc">&nbsp;                &quot;Qual o comercializador com maior volume de faturação&quot;,</b>
+<b class="nc">&nbsp;                &quot;Listar as facturas emitidas por um comercializador&quot;,</b>
+<b class="nc">&nbsp;                &quot;Dar uma ordena̧ção dos maiores consumidores de energia durante um Periodo a determinar&quot;</b>
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        menuQueries.setHandler(1, () -&gt; {</b>
+&nbsp;            try {
+<b class="nc">&nbsp;                System.out.println(&quot;Insira a data inical (Formato dd/mm/aaaa) &quot;);</b>
+<b class="nc">&nbsp;                String inputdatainic = scanner.nextLine();</b>
+<b class="nc">&nbsp;                DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern(&quot;d/M/yyyy&quot;);</b>
+<b class="nc">&nbsp;                LocalDate dateinic = LocalDate.parse(inputdatainic, dateFormat);</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Insira a data final(Formato dd/mm/aaaa):&quot;);</b>
+<b class="nc">&nbsp;                String inputdatafim = scanner.nextLine();</b>
+<b class="nc">&nbsp;                LocalDate datefim = LocalDate.parse(inputdatafim, dateFormat);</b>
+<b class="nc">&nbsp;                System.out.println(&quot;A casa que mais gastou no periodo entre &quot; + dateinic + &quot; e &quot; + datefim + &quot; foi:\n&quot; + controller.executaQuery1(dateinic, datefim));</b>
+<b class="nc">&nbsp;                if (datefim.compareTo(dateinic) &lt; 0)</b>
+<b class="nc">&nbsp;                    throw new DataNaoValidaException(&quot;A data inserida é anterior à data atual!&quot;);</b>
+<b class="nc">&nbsp;            } catch (DateTimeParseException e) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;A data não se encontra na formatação correta.\nSimulação não realizada&quot;);</b>
+&nbsp;            }
+<b class="nc">&nbsp;            catch (DataNaoValidaException e) {</b>
+<b class="nc">&nbsp;                System.out.println(e.getMessage());</b>
+&nbsp;            }
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        menuQueries.setHandler(2, () -&gt; {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;O fornecedor com maior volume de faturação é:\n&quot; + controller.executaQuery2());</b>
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        menuQueries.setHandler(3, () -&gt; {</b>
+&nbsp;            try {
+<b class="nc">&nbsp;                System.out.println(&quot;Insira o nome do comercializador&quot;);</b>
+<b class="nc">&nbsp;                String nome = scanner.nextLine();</b>
+<b class="nc">&nbsp;                System.out.println(&quot;O fornecedor emitiu as seguintes faturas:\n&quot; + controller.executaQuery3(nome));</b>
+<b class="nc">&nbsp;            } catch (CasaExceptionFornecedorNaoExiste e) {</b>
+<b class="nc">&nbsp;                System.out.println(e.getMessage());</b>
+&nbsp;            }
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        menuQueries.setHandler(4, () -&gt; {</b>
+&nbsp;            try {
+<b class="nc">&nbsp;                System.out.println(&quot;Insira a data inical (Formato dd/mm/aaaa) &quot;);</b>
+<b class="nc">&nbsp;                String inputdatainic = scanner.nextLine();</b>
+<b class="nc">&nbsp;                DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern(&quot;d/M/yyyy&quot;);</b>
+<b class="nc">&nbsp;                LocalDate dateinic = LocalDate.parse(inputdatainic, dateFormat);</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Insira a data final(Formato dd/mm/aaaa):&quot;);</b>
+<b class="nc">&nbsp;                String inputdatafim = scanner.nextLine();</b>
+<b class="nc">&nbsp;                LocalDate datefim = LocalDate.parse(inputdatafim, dateFormat);</b>
+<b class="nc">&nbsp;                if (datefim.compareTo(dateinic) &lt; 0)</b>
+<b class="nc">&nbsp;                    throw new DataNaoValidaException(&quot;A data inserida é anterior à data atual!&quot;);</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Os maiores consumidores de energia no periodo entre &quot; + dateinic + &quot; e &quot; + datefim + &quot; foram:\n&quot; + controller.executaQuery4(dateinic, datefim));</b>
+<b class="nc">&nbsp;            } catch (DateTimeParseException e) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;A data não se encontra na formatação correta.\nSimulação não realizada&quot;);</b>
+&nbsp;            }
+<b class="nc">&nbsp;            catch (DataNaoValidaException e) {</b>
+<b class="nc">&nbsp;                System.out.println(e.getMessage());</b>
+&nbsp;            }
+&nbsp;
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        menuInicial.setPreCondition (2, controller::Precondition2);</b>
+<b class="nc">&nbsp;        menuInicial.setPreCondition(3, controller::Precondition4);</b>
+<b class="nc">&nbsp;        menuInicial.setPreCondition(4, controller::Precondition4);</b>
+<b class="nc">&nbsp;        menuInicial.setPreCondition(5, controller::Precondition4);//são iguais</b>
+<b class="nc">&nbsp;        menuInicial.setPreCondition(6, controller::Precondition6);</b>
+<b class="nc">&nbsp;        menuInicial.setPreCondition(11, controller::Precondition4);</b>
+&nbsp;
+<b class="nc">&nbsp;        menuInicial.setHandler(2, () -&gt; {</b>
+&nbsp;
+<b class="nc">&nbsp;            NewMenu menuAddDivisoes = new NewMenu(new String[]{</b>
+<b class="nc">&nbsp;                    &quot;Adicionar uma nova divisão&quot;</b>
+&nbsp;            });
+<b class="nc">&nbsp;            System.out.println(&quot;Insira o nome do proprietário&quot;);</b>
+<b class="nc">&nbsp;            String nome = scanner.nextLine();</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Insira o NIF do proprietário&quot;);</b>
+<b class="nc">&nbsp;            int nif = is.nextInt();</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Insira o nome da Empresa:&quot;);</b>
+<b class="nc">&nbsp;            String nomeEmpresa = scanner.nextLine();</b>
+<b class="nc">&nbsp;            controller.InsereCasa(nome, nif, nomeEmpresa);</b>
+&nbsp;
+&nbsp;            try {
+<b class="nc">&nbsp;                menuAddDivisoes.setHandler(1, () -&gt; {</b>
+&nbsp;                    try {
+<b class="nc">&nbsp;                        System.out.println(&quot;Insira o nome da Divisão da casa que pretende adicionar:&quot;);</b>
+<b class="nc">&nbsp;                        String nomeDivisao = scanner.nextLine();</b>
+<b class="nc">&nbsp;                        controller.addRoom(nif, nomeDivisao);</b>
+<b class="nc">&nbsp;                    } catch (DivisaoJaExisteException a) {</b>
+<b class="nc">&nbsp;                        System.out.println(a.getMessage());</b>
+&nbsp;                    }
+&nbsp;                });
+&nbsp;
+<b class="nc">&nbsp;                menuAddDivisoes.run();</b>
+<b class="nc">&nbsp;            } catch (NumberFormatException e) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Formato do NIF errado! Não foi possível adicionar a Casa Inteligente!&quot;);</b>
+&nbsp;            }
+&nbsp;
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        menuInicial.setHandler(1, () -&gt; {</b>
+&nbsp;            try {
+<b class="nc">&nbsp;                System.out.println(&quot;Insira o nome da Empresa:&quot;);</b>
+<b class="nc">&nbsp;                String nome = scanner.nextLine();</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Insira o valor do multiplicador:&quot;);</b>
+<b class="nc">&nbsp;                double multiplicador = is.nextDouble();</b>
+<b class="nc">&nbsp;                controller.InsereFornecedor(nome,valorbase, imposto, multiplicador);</b>
+&nbsp;                //System.out.println(sistema.toString());
+<b class="nc">&nbsp;            } catch (NumberFormatException e) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;O último dado introduzido não está na forma correta. Não foi possível adicionar o dispositivo!&quot;);</b>
+&nbsp;            } //catch (FornecedorComNomeJaExistenteException e) {
+&nbsp;            //System.out.println(e.getMessage() + &quot; Não foi possível adicionar a Empresa!&quot;);
+&nbsp;            // }
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        menuInicial.setHandler(9, () -&gt; {</b>
+<b class="nc">&nbsp;            System.out.println(controller.getSistema());</b>
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        menuInicial.setHandler(4, () -&gt; {</b>
+&nbsp;            try {
+<b class="nc">&nbsp;                System.out.println(&quot;Insira o nome do ficheiro:&quot;);</b>
+<b class="nc">&nbsp;                String nome = scanner.nextLine();</b>
+<b class="nc">&nbsp;                controller.guardaEstado(nome);</b>
+<b class="nc">&nbsp;            } catch (FileNotFoundException e) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Nome do ficheiro errado.\nDados não guardados!&quot;);</b>
+<b class="nc">&nbsp;            } catch (NotSerializableException e) {</b>
+<b class="nc">&nbsp;                System.out.println(e.getMessage());</b>
+<b class="nc">&nbsp;            } catch (IOException e) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Ocorreu um erro na escrita do ficheiro.\nDados não guardados!&quot;);</b>
+&nbsp;            }
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        menuInicial.setHandler(6, menuQueries::run);</b>
+&nbsp;
+<b class="nc">&nbsp;        menuInicial.setHandler(7, () -&gt; {</b>
+&nbsp;            try {
+<b class="nc">&nbsp;                System.out.println(&quot;Insira o nome do ficheiro a carregar:&quot;);</b>
+<b class="nc">&nbsp;                String nome = scanner.nextLine();</b>
+<b class="nc">&nbsp;                controller.carregaEstado(nome);</b>
+<b class="nc">&nbsp;            } catch (FileNotFoundException e) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;O nome do ficheiro é inválido.\nDados não carregados!&quot;);</b>
+<b class="nc">&nbsp;            } catch (ClassNotFoundException e) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;A classe especificada não foi encontrada.\nDados não carregados!&quot;);</b>
+<b class="nc">&nbsp;            } catch (IOException e) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Ocorreu um erro na leitura do ficheiro!\nDados não carregados!&quot;);</b>
+&nbsp;            }
+&nbsp;        });
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        menuInicial.setHandler(5,()-&gt; {</b>
+&nbsp;            try {
+<b class="nc">&nbsp;                System.out.println(&quot;Dia Atual: &quot; + controller.getTime() + &quot;  (Formato aaaa/mm/dd)&quot;);</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Insira a data de término da simulação (Formato dd/mm/aaaa):&quot;);</b>
+<b class="nc">&nbsp;                String inputdata = scanner.nextLine();</b>
+<b class="nc">&nbsp;                DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern(&quot;d/M/yyyy&quot;);</b>
+<b class="nc">&nbsp;                LocalDate date = LocalDate.parse(inputdata, dateFormat);</b>
+<b class="nc">&nbsp;                if (date.compareTo(controller.getTime()) &lt; 0)</b>
+<b class="nc">&nbsp;                    throw new DataNaoValidaException(&quot;A data inserida é anterior à data atual!&quot;);</b>
+<b class="nc">&nbsp;                controller.simulacao(date);</b>
+<b class="nc">&nbsp;            }</b>
+<b class="nc">&nbsp;            catch (DateTimeParseException e) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;A data não se encontra na formatação correta.\nSimulação não realizada&quot;);</b>
+&nbsp;            }
+<b class="nc">&nbsp;            catch(DataNaoValidaException e) {</b>
+<b class="nc">&nbsp;               System.out.println(e.getMessage());</b>
+&nbsp;            }
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        menuInicial.setHandler(3, menuDevices::run);</b>
+&nbsp;
+<b class="nc">&nbsp;        menuInicial.setHandler(10, () -&gt; {</b>
+<b class="nc">&nbsp;            Parser p = new Parser();</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Insira um ficheiro de texto:&quot;);</b>
+<b class="nc">&nbsp;            String nomeFicheiro =  scanner.nextLine();</b>
+&nbsp;            try {
+<b class="nc">&nbsp;                controller.setSistema(p.parse(valorbase, imposto, nomeFicheiro));</b>
+<b class="nc">&nbsp;            } catch(FileNotFoundException e) {</b>
+<b class="nc">&nbsp;                System.out.println(e.getMessage());</b>
+&nbsp;            }
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        menuInicial.setHandler(11, () -&gt; {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Insira um NIF:&quot;);</b>
+<b class="nc">&nbsp;            int nif = scanner.nextInt();</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Insira um fornecedor:&quot;);</b>
+<b class="nc">&nbsp;            String fornecedor = scanner.nextLine();</b>
+&nbsp;            try {
+<b class="nc">&nbsp;                controller.setFornecedorEm(nif, fornecedor);</b>
+<b class="nc">&nbsp;            } catch(CasaExceptionFornecedorNaoExiste | RuntimeException e) {</b>
+<b class="nc">&nbsp;                System.out.println(e.getMessage());</b>
+&nbsp;            }
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        menuInicial.run();</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-17 00:04</div>
+</div>
+</body>
+</html>
